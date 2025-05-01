@@ -1,2 +1,20 @@
 @import "tailwindcss";
 
+.section {
+    width:100vw;
+    height: 100%;
+    margin: auto;
+}
+
+.container {
+    max-width: 920px;
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.content {
+    width: 100%;
+}
+
+
