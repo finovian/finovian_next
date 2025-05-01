@@ -1,11 +1,15 @@
-import React from 'react'
-
 const MarketTrends = () => {
-    return (
-        <div>
+  return (
+    <section
+      id="abc"
+      className="w-full py-12  flex items-center justify-center"
+    >
+      <div className="container mx-auto max-w-[920px] text-center">
+        <h2 className="text-3xl font-bold">MarketTrends Section</h2>
+        <p className="mt-4">More content or explanation here.</p>
+      </div>
+    </section>
+  );
+};
 
-        </div>
-    )
-}
-
-export default MarketTrends
+export default MarketTrends;
