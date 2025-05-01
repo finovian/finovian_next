@@ -4,17 +4,18 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="w-full h-screen flex items-center justify-center"
+      className="w-full h-[780px] flex items-center justify-center"
     >
       <div className="container mx-auto max-w-[920px] flex justify-items-center items-center flex-col text-center ">
-        <h1 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+        <h1 className="text-3xl md:text-[52px] font-[700] font-serif leading-16 mt-9 mb-20 ">
           Think better. Decide better. Live better.
         </h1>
-        <p className="text-gray-700 mb-4 text-base leading-relaxed max-w-2xl">
+
+        <p className="text-gray-700 text-[20px] mb-4 text-base text-left leading-relaxed max-w-2xl">
           Our timeless insights for a complex Tuesday. Sunday understanding by
           300,000+ independent thinkers.
         </p>
-        <p className="text-gray-700 mb-6 text-base leading-relaxed max-w-2xl">
+        <p className="text-gray-700 mb-4 text-[20px] text-base text-left leading-relaxed max-w-2xl">
           <span className="font-semibold">Bonus: </span>
           Prescribed Chapter 1 of our recent New York Times best- selling book,
           clear thinking: turning ordinary approaches into extraordinary

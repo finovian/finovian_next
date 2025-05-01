@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .section {
-    width:100vw;
+    width: 100vw;
     height: 100%;
     margin: auto;
 }
@@ -18,3 +18,6 @@
 }
 
 
+.fontFF {
+    font-family: 'Poppins', sans-serif;
+}
