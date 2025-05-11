@@ -2,8 +2,8 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <div>
-
+    <div className="h-[80px] bg-amber-200">
+      navbar
     </div>
   )
 }
