@@ -1,13 +1,8 @@
 import React from "react";
 
-const Article = () => {
+const CategaryHeading = () => {
   return (
     <div>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <h1 className="text-2xl font-bold">Stocks</h1>
-        </div>
-      </div>
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <h1 className="text-2xl font-bold">Stocks</h1>
@@ -17,4 +12,4 @@ const Article = () => {
   );
 };
 
-export default Article;
+export default CategaryHeading;

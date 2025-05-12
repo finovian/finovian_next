@@ -3,8 +3,9 @@ import { Providers } from "@/provider/Provider";
 import "./globals.css";
 
 import { Inter, Merriweather } from "next/font/google";
-import Header from "@/components/common/Header";
+// import Header from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
+import Navbar from "@/components/common/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,7 +30,7 @@ export default function RootLayout({
       <body className="font-sans">
         <Providers>
           <div className="flex flex-col min-h-screen">
-            <Header />
+            <Navbar />
             {children}
             {/* <Footer /> */}
           </div>
