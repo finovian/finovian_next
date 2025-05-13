@@ -1,18 +1,17 @@
 import React from "react";
+import CategaryHeading from "../common/CategaryHeading";
+import BlogCard from "../common/BlogCard";
 
 const Article = () => {
   return (
-    <div>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <h1 className="text-2xl font-bold">Stocks</h1>
-        </div>
-      </div>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <h1 className="text-2xl font-bold">Stocks</h1>
-        </div>
-      </div>
+    <div className="flex flex-col ">
+      <CategaryHeading />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
     </div>
   );
 };

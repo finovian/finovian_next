@@ -31,7 +31,7 @@ export default function FinancialNavbar() {
           {navLinks.map((link) => (
             <Link
               key={link}
-              href={`/${link.toLowerCase()}`}
+              href={`/category/${link.toLowerCase()}`}
               className="text-[#1a202c] hover:text-[#0a2540] font-medium transition"
             >
               {link}
@@ -99,7 +99,7 @@ export default function FinancialNavbar() {
           {navLinks.map((link) => (
             <Link
               key={link}
-              href={`/${link.toLowerCase()}`}
+              href={`/category/${link.toLowerCase()}`}
               className="text-[#1a202c] font-medium"
               onClick={() => setMenuOpen(false)}
             >
