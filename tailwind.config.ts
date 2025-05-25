@@ -1,6 +1,10 @@
 const config = {
   theme: {
     extend: {
+      fontFamily: {
+        newsreader: ["Newsreader", "sans-serif"],
+      },
+
       animation: {
         "fade-in": "fadeIn 0.3s ease-out",
       },

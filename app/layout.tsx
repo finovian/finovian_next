@@ -3,9 +3,8 @@ import { Providers } from "@/provider/Provider";
 import "./globals.css";
 
 import { Inter, Merriweather } from "next/font/google";
-// import Header from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
-import Navbar from "@/components/common/Navbar";
+import Header from "@/components/common/Header";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,11 +27,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${merriweather.variable}`}>
       <body className="font-sans">
+
         <Providers>
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            {children}
-            {/* <Footer /> */}
+          <div
+            className="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden"
+          >
+            <div className="layout-container flex h-full grow flex-col">
+              <Header />
+              {children}
+              <Footer />
+            </div>
           </div>
         </Providers>
       </body>

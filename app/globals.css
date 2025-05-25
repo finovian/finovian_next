@@ -1,4 +1,41 @@
 @import "tailwindcss";
 
+body {
+  font-family: "auto";
+}
 
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/Newsreader_9pt-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/Newsreader_9pt-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/Newsreader_9pt-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/Newsreader_9pt-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/Newsreader_9pt-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+/* You can continue for other weights or styles */
