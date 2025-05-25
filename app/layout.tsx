@@ -34,7 +34,11 @@ export default function RootLayout({
           >
             <div className="layout-container flex h-full grow flex-col">
               <Header />
-              {children}
+              <div className="px-0  flex flex-1 justify-center py-5">
+                <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
+                  {children}
+                </div>
+              </div>
               <Footer />
             </div>
           </div>

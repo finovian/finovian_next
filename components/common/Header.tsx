@@ -37,24 +37,24 @@ const Header = () => {
                     >
                         Stocks
                     </Link>
-                    <a
+                    <Link
                         className="text-[#141415] text-sm font-medium leading-normal"
                         href="/category/strategy"
                     >
                         Strategy
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         className="text-[#141415] text-sm font-medium leading-normal"
                         href="/category/macro"
                     >
                         Macro
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         className="text-[#141415] text-sm font-medium leading-normal"
                         href="/about"
                     >
                         About
-                    </a>
+                    </Link>
                 </div>
                 <button
                     aria-label="Search"
