@@ -6,6 +6,21 @@ import { Inter, Merriweather } from "next/font/google";
 import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
 
+export const metadata = {
+  title: "Finovian - Smart US Finance Insights",
+  description: "Stay updated with the latest finance trends, tax strategies, and budgeting tips for US-based individuals and businesses.",
+  keywords: "finance, investing, US tax, budgeting, financial tips, Finovian",
+  authors: [{ name: "Finovian" }],
+  openGraph: {
+    title: "Finovian",
+    description: "Smart US Finance Insights",
+    url: "https://finovian.com",
+    siteName: "Finovian",
+    type: "website"
+  }
+}
+
+
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -26,7 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${merriweather.variable}`}>
-      <body className="font-sans">
+      <body className="font-sans" aria-label="Finovian blog layout">
 
         <Providers>
           <div

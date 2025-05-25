@@ -1,7 +1,10 @@
+"use client";
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 
 const Header = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [searchOpen, setSearchOpen] = useState(false);
     return (
         <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f2f2f3] px-10 py-3">
             <div className="flex items-center gap-4 text-[#141415]">
