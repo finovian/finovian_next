@@ -5,15 +5,7 @@ import Link from "next/link";
 import { Search } from "lucide-react";
 import clsx from "clsx";
 
-const navLinks = [
-  "Stocks",
-  "Strategy",
-  "Trends",
-  "Insights",
-  "Earnings",
-  "Sectors",
-  "Macro",
-];
+const navLinks = ["Home", "Stocks", "Strategy", "Macro", "About"];
 
 export default function FinancialNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,13 +13,13 @@ export default function FinancialNavbar() {
 
   return (
     <nav className="fixed top-0 w-full bg-white shadow-md z-50 border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-10 py-3 flex justify-between items-center">
         <div className="text-2xl font-bold text-[#0a2540] tracking-wide">
           FinScope
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-6">
+        <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link}
@@ -38,7 +30,7 @@ export default function FinancialNavbar() {
             </Link>
           ))}
 
-          <div className="relative flex items-center space-x-2">
+          {/* <div className="relative flex items-center space-x-2">
             <button
               onClick={() => setSearchOpen(!searchOpen)}
               aria-label="Toggle Search"
@@ -53,26 +45,23 @@ export default function FinancialNavbar() {
                 className="border-b border-gray-300 focus:border-[#0a2540] outline-none px-2 py-1 text-sm text-[#1a202c] transition-all"
               />
             )}
-            <button className="bg-[#d4af37] text-white px-4 py-2 rounded-full text-sm font-semibold tracking-wide shadow hover:shadow-lg transition">
-              Subscribe
-            </button>
-          </div>
+          </div> */}
         </div>
 
         {/* Mobile Controls */}
         <div className="flex lg:hidden items-center space-x-4">
-          <button
+          {/* <button
             onClick={() => setSearchOpen(!searchOpen)}
             aria-label="Search"
           >
             <Search className="text-[#0a2540]" size={24} />
-          </button>
+          </button> */}
           <Hamburger isOpen={menuOpen} toggle={() => setMenuOpen(!menuOpen)} />
         </div>
       </div>
 
       {/* Mobile Search Box */}
-      <div
+      {/* <div
         className={clsx(
           "lg:hidden px-6 transition-all duration-300 overflow-hidden",
           searchOpen
@@ -86,7 +75,7 @@ export default function FinancialNavbar() {
           autoFocus
           className="w-full border-b border-gray-300 focus:border-[#0a2540] outline-none px-2 py-2 text-base"
         />
-      </div>
+      </div> */}
 
       {/* Mobile Navigation */}
       <div
@@ -106,9 +95,6 @@ export default function FinancialNavbar() {
               {link}
             </Link>
           ))}
-          <button className="mt-4 bg-[#d4af37] text-white px-6 py-2 rounded-full text-base font-semibold shadow hover:shadow-md transition">
-            Subscribe
-          </button>
         </div>
       </div>
     </nav>

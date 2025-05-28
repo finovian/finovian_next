@@ -4,11 +4,12 @@ import "./globals.css";
 
 import { Inter, Merriweather } from "next/font/google";
 import Footer from "@/components/common/Footer";
-import Header from "@/components/common/Header";
+import FinancialNavbar from "@/components/common/Navbar";
 
 export const metadata = {
   title: "Finovian - Smart US Finance Insights",
-  description: "Stay updated with the latest finance trends, tax strategies, and budgeting tips for US-based individuals and businesses.",
+  description:
+    "Stay updated with the latest finance trends, tax strategies, and budgeting tips for US-based individuals and businesses.",
   keywords: "finance, investing, US tax, budgeting, financial tips, Finovian",
   authors: [{ name: "Finovian" }],
   openGraph: {
@@ -16,10 +17,9 @@ export const metadata = {
     description: "Smart US Finance Insights",
     url: "https://finovian.com",
     siteName: "Finovian",
-    type: "website"
-  }
-}
-
+    type: "website",
+  },
+};
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,14 +42,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${merriweather.variable}`}>
       <body className="font-sans" aria-label="Finovian blog layout">
-
         <Providers>
-          <div
-            className="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden"
-          >
+          <div className="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden">
             <div className="layout-container flex h-full grow flex-col">
-              <Header />
-              <div className="px-0  flex flex-1 justify-center py-5">
+              {/* <Header /> */}
+              <FinancialNavbar />
+              <div className="px-0 mt-[55px] flex flex-1 justify-center py-5">
                 <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
                   {children}
                 </div>

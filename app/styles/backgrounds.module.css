@@ -1,8 +1,6 @@
 .heroBackground {
-  background-image: linear-gradient(
-      rgba(0, 0, 0, 0.1) 0%,
-      rgba(0, 0, 0, 0.4) 100%
-    ),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.4) 100%),
     url("https://lh3.googleusercontent.com/aida-public/AB6AXuCFiwDpYfBzbMSX3D-2YI7oSiuQnFD_XZO0bcncAgLui0Wnj8z4tkP_MOw92qYBGOpXrO6k16S7DCYeXRQF5_FM503V1duyrHI9vIAL_slyGoDl0HA7Sxdes6O03PxZewTroMgC2wHXU9noCuUVtnPggy1tYAGPM4_AKSU5XXxTNFvTFIYi-Yqj_w03ygEztr72C_vM9DGXO7ADpHdziRJOR5AE65qbEFvAdAUSVAk0O9dBEGn2yfl4M6lteGJd0XEgaVUCxgD48aA");
 }
 
