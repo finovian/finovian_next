@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Search } from "lucide-react";
+// import { Search } from "lucide-react";
 import clsx from "clsx";
 
 const navLinks = ["Home", "Stocks", "Strategy", "Macro", "About"];
 
 export default function FinancialNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
+  // const [searchOpen, setSearchOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 w-full bg-white shadow-md z-50 border-b border-gray-100">
