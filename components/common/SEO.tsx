@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const SEO = () => {
-    return (
-        <div>
+  return <div></div>;
+};
 
-        </div>
-    )
-}
-
-export default SEO
+export default SEO;
