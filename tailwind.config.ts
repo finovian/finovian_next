@@ -1,3 +1,5 @@
+import containerQueries from "@tailwindcss/container-queries";
+
 const config = {
   theme: {
     extend: {
@@ -7,8 +9,8 @@ const config = {
       screens: {
         xs: "420px",
         tab: "768px",
-        "3xl": "1600px", // Extra large desktop
-        ultra: "1920px", // Ultra wide
+        "3xl": "1600px",
+        ultra: "1920px",
       },
 
       animation: {
@@ -28,7 +30,7 @@ const config = {
     "./app/**/*.{ts,tsx}",
     "./imports/**/*.{ts,tsx}",
   ],
-  plugins: [],
+  plugins: [containerQueries],
 };
 
 export default config;
