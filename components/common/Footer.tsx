@@ -1,190 +1,121 @@
 const Footer = () => {
   return (
-    <footer className="flex justify-center">
-      <div className="flex max-w-[960px] flex-1 flex-col">
-        <footer className="flex flex-col gap-6 px-5 py-10 text-center @container">
-          <div className="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              Home
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              Blog
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              Categories
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              Stocks
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              Crypto
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              Budgeting
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              FAQs
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              Guides
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              Tools
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              Newsletter
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              About Us
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              Contact
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              Advertise
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              Careers
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              Privacy Policy
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              Terms of Use
-            </a>
-            <a
-              className="text-neutral-500 text-base font-normal leading-normal min-w-40"
-              href="#"
-            >
-              Disclaimer
-            </a>
+    <footer className="bg-gray-50 border-t border-gray-200 text-gray-700">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Brand Info */}
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900">YourBrand</h2>
+            <p className="mt-4 text-sm text-gray-600">
+              We bring you the best solutions with simplicity and trust.
+            </p>
           </div>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="#">
-              <div
-                className="text-neutral-500"
-                data-icon="TwitterLogo"
-                data-size="24px"
-                data-weight="regular"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24px"
-                  height="24px"
-                  fill="currentColor"
-                  viewBox="0 0 256 256"
-                >
-                  <path d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z" />
-                </svg>
-              </div>
-            </a>
-            <a href="#">
-              <div
-                className="text-neutral-500"
-                data-icon="LinkedinLogo"
-                data-size="24px"
-                data-weight="regular"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24px"
-                  height="24px"
-                  fill="currentColor"
-                  viewBox="0 0 256 256"
-                >
-                  <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z" />
-                </svg>
-              </div>
-            </a>
-            <a href="#">
-              <div
-                className="text-neutral-500"
-                data-icon="InstagramLogo"
-                data-size="24px"
-                data-weight="regular"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24px"
-                  height="24px"
-                  fill="currentColor"
-                  viewBox="0 0 256 256"
-                >
-                  <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z" />
-                </svg>
-              </div>
-            </a>
-            <a href="#">
-              <div
-                className="text-neutral-500"
-                data-icon="YoutubeLogo"
-                data-size="24px"
-                data-weight="regular"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24px"
-                  height="24px"
-                  fill="currentColor"
-                  viewBox="0 0 256 256"
-                >
-                  <path d="M164.44,121.34l-48-32A8,8,0,0,0,104,96v64a8,8,0,0,0,12.44,6.66l48-32a8,8,0,0,0,0-13.32ZM120,145.05V111l25.58,17ZM234.33,69.52a24,24,0,0,0-14.49-16.4C185.56,39.88,131,40,128,40s-57.56-.12-91.84,13.12a24,24,0,0,0-14.49,16.4C19.08,79.5,16,97.74,16,128s3.08,48.5,5.67,58.48a24,24,0,0,0,14.49,16.41C69,215.56,120.4,216,127.34,216h1.32c6.94,0,58.37-.44,91.18-13.11a24,24,0,0,0,14.49-16.41c2.59-10,5.67-28.22,5.67-58.48S236.92,79.5,234.33,69.52Zm-15.49,113a8,8,0,0,1-4.77,5.49c-31.65,12.22-85.48,12-86,12H128c-.54,0-54.33.2-86-12a8,8,0,0,1-4.77-5.49C34.8,173.39,32,156.57,32,128s2.8-45.39,5.16-54.47A8,8,0,0,1,41.93,68c30.52-11.79,81.66-12,85.85-12h.27c.54,0,54.38-.18,86,12a8,8,0,0,1,4.77,5.49C221.2,82.61,224,99.43,224,128S221.2,173.39,218.84,182.47Z" />
-                </svg>
-              </div>
-            </a>
+
+          {/* Navigation Links */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">
+              Company
+            </h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a href="#" className="hover:text-black">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-black">
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-black">
+                  Careers
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-black">
+                  Blog
+                </a>
+              </li>
+            </ul>
           </div>
-          <p className="text-neutral-500 text-base font-normal leading-normal">
-            © 2024 Finance Insights. All rights reserved.
-          </p>
-        </footer>
+
+          {/* Support Links */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">
+              Support
+            </h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a href="#" className="hover:text-black">
+                  Help Center
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-black">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-black">
+                  Terms of Service
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-black">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info / Social */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-3">
+              Contact Us
+            </h3>
+            <p className="text-sm">info@yourbrand.com</p>
+            <p className="text-sm">+1 (234) 567-8901</p>
+
+            <div className="flex space-x-4 mt-4">
+              <a href="#" className="text-gray-500 hover:text-black transition">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M22 12c0-5.522-4.478-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.988h-2.54v-2.89h2.54V9.797c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.773-1.63 1.562v1.875h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                </svg>
+              </a>
+              <a href="#" className="text-gray-500 hover:text-black transition">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 22.4.36a9.86 9.86 0 0 1-3.13 1.2A4.92 4.92 0 0 0 16.8 0c-2.73 0-4.94 2.18-4.94 4.87 0 .39.05.76.13 1.12A13.94 13.94 0 0 1 1.67 1.12a4.82 4.82 0 0 0-.67 2.45 4.87 4.87 0 0 0 2.18 4.06 4.9 4.9 0 0 1-2.23-.6v.06c0 2.4 1.73 4.4 4.02 4.85a4.97 4.97 0 0 1-2.22.08 4.9 4.9 0 0 0 4.6 3.37A9.86 9.86 0 0 1 0 19.53 13.93 13.93 0 0 0 7.55 21.9c9.05 0 14-7.25 14-13.54 0-.21-.01-.42-.02-.63A9.84 9.84 0 0 0 23 3z" />
+                </svg>
+              </a>
+              <a href="#" className="text-gray-500 hover:text-black transition">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2.04c-5.52 0-10 4.48-10 10.01 0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.72c-2.78.61-3.37-1.34-3.37-1.34-.46-1.17-1.12-1.48-1.12-1.48-.92-.62.07-.61.07-.61 1.01.07 1.54 1.03 1.54 1.03.9 1.52 2.37 1.08 2.95.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.12-4.55-4.98 0-1.1.39-2.01 1.02-2.72-.1-.25-.44-1.27.1-2.65 0 0 .83-.27 2.75 1.02a9.49 9.49 0 0 1 5 0c1.92-1.29 2.75-1.02 2.75-1.02.54 1.38.2 2.4.1 2.65.64.71 1.02 1.62 1.02 2.72 0 3.87-2.33 4.73-4.56 4.97.36.31.69.92.69 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 22 12.05c0-5.53-4.48-10.01-10-10.01z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Footer */}
+        <div className="mt-12 border-t border-gray-200 pt-6 text-sm text-gray-500 text-center">
+          &copy; {new Date().getFullYear()} YourBrand. All rights reserved.
+        </div>
       </div>
     </footer>
   );
