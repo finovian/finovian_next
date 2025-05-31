@@ -1,7 +1,13 @@
 import React from "react";
 import styles from "../../../app/styles/backgrounds.module.css";
 
-const HeroSection = () => {
+import { client } from "@/lib/sanity";
+import { allPostsQuery, postBySlugQuery } from "@/lib/queries";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { PortableText } from "@portabletext/react";
+
+const HeroSection = ({ posts }: any) => {
+  console.log("Sanity Posts:", posts); // ✅ Log here
   return (
     <div className="@container">
       <div className="@[480px]:p-4">
@@ -26,5 +32,14 @@ const HeroSection = () => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const posts = await client.fetch(allPostsQuery);
+  return {
+    props: {
+      posts,
+    },
+  };
+}
 
 export default HeroSection;
