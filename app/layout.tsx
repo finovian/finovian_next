@@ -53,7 +53,7 @@ export default function RootLayout({
                 </div>
               </div>
               <div className="bg-[#0f0f0f] text-white font-serif py-16 px-6 md:px-12 lg:px-24">
-                <div className="max-w-5xl mx-auto">
+                <div className="mx-auto layout-content-container flex flex-col max-w-[960px] flex-1">
                   <p className="text-xs uppercase text-gray-400 tracking-wider mb-4">
                     Discover what you’re missing
                   </p>
@@ -73,7 +73,7 @@ export default function RootLayout({
                       <input
                         type="email"
                         placeholder="Your best email"
-                        className="px-4 py-2.5 text-black rounded-md border-none focus:ring-0 focus:outline-none w-full md:w-[250px]"
+                        className="px-4 py-2.5 bg-white text-black rounded-md border-none focus:ring-0 focus:outline-none w-full md:w-[250px]"
                       />
                       <button
                         type="submit"
