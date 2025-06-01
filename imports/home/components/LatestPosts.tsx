@@ -1,94 +1,90 @@
 import React from "react";
 import styles from "../../../app/styles/backgrounds.module.css";
+import Link from "next/link";
+
+const PostCard = ({
+  category,
+  title,
+  excerpt,
+  bgClass,
+  link = "#",
+  ariaLabel,
+}: {
+  category: string;
+  title: string;
+  excerpt: string;
+  bgClass: string;
+  link?: string;
+  ariaLabel: string;
+}) => (
+  <article className="flex flex-col md:flex-row items-stretch justify-between gap-4 rounded-lg p-4 bg-white shadow-sm">
+    <div className="flex flex-col gap-2 flex-[2_2_0px]">
+      <p className="text-[#737578] text-sm font-normal">{category}</p>
+      <h3 className="text-[#141415] text-base font-bold leading-tight">
+        {title}
+      </h3>
+      <p className="text-[#737578] text-sm font-normal">{excerpt}</p>
+      <Link
+        href={link}
+        aria-label={`Read full post: ${title}`}
+        className="text-[#22262a] text-sm font-medium mt-2 hover:underline w-fit"
+      >
+        Read More
+      </Link>
+    </div>
+    <div
+      className={`w-full md:w-[40%] aspect-video bg-center bg-cover bg-no-repeat rounded ${bgClass}`}
+      role="img"
+      aria-label={ariaLabel}
+    />
+  </article>
+);
 
 const LatestPosts = () => {
   return (
-    <>
-      <h2 className="text-[#141415] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
+    <section className="px-4 py-6">
+      <h2 className="text-[#141415] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">
         Latest Posts
       </h2>
-      <div className="p-4">
-        <div className="flex items-stretch justify-between gap-4 rounded">
-          <div className="flex flex-col gap-1 flex-[2_2_0px]">
-            <p className="text-[#737578] text-sm font-normal leading-normal">
-              Strategy
-            </p>
-            <p className="text-[#141415] text-base font-bold leading-tight">
-              Decoding Market Volatility: Strategies for Uncertain Times
-            </p>
-            <p className="text-[#737578] text-sm font-normal leading-normal">
-              Learn how to navigate market fluctuations and protect your
-              investments during periods of uncertainty. Discover proven
-              strategies for managing risk and maximizing returns.
-            </p>
-          </div>
-          <div
-            className={`w-full bg-center bg-no-repeat aspect-video bg-cover rounded flex-1 ${styles.latestPostBackground}`}
-          />
-        </div>
-      </div>
 
-      <div className="p-4">
-        <div className="flex items-stretch justify-between gap-4 rounded">
-          <div className="flex flex-col gap-1 flex-[2_2_0px]">
-            <p className="text-[#737578] text-sm font-normal leading-normal">
-              Stocks
-            </p>
-            <p className="text-[#141415] text-base font-bold leading-tight">
-              The Rise of Sustainable Investing: Aligning Values with Returns
-            </p>
-            <p className="text-[#737578] text-sm font-normal leading-normal">
-              Explore the growing trend of ESG investing and how it&apos;s
-              reshaping the financial landscape. Discover how to invest in
-              companies that prioritize environmental and social responsibility.
-            </p>
-          </div>
-          <div
-            className={`w-full bg-center bg-no-repeat aspect-video bg-cover rounded flex-1 ${styles.sustainableBackground}`}
-          />
-        </div>
+      <div className="space-y-6">
+        <PostCard
+          category="Strategy"
+          title="Decoding Market Volatility: Strategies for Uncertain Times"
+          excerpt="Learn how to navigate market fluctuations and protect your investments during periods of uncertainty. Discover proven strategies for managing risk and maximizing returns."
+          bgClass={styles.psychologyBackground}
+          ariaLabel="Market volatility strategy image"
+          link="/category/strategy"
+        />
+
+        <PostCard
+          category="Stocks"
+          title="The Rise of Sustainable Investing: Aligning Values with Returns"
+          excerpt="Explore the growing trend of ESG investing and how it's reshaping the financial landscape. Discover how to invest in companies that prioritize environmental and social responsibility."
+          bgClass={styles.sustainableBackground}
+          ariaLabel="Sustainable investing concept image"
+          link="/category/stocks"
+        />
+
+        <PostCard
+          category="Macro"
+          title="Understanding Monetary Policy: A Guide for Investors"
+          excerpt="Gain a deeper understanding of how central banks influence the economy and financial markets. Learn how to interpret monetary policy decisions and their potential impact on your investments."
+          bgClass={styles.monetaryBackground}
+          ariaLabel="Central bank monetary policy illustration"
+          link="/category/macro"
+        />
+
+        <PostCard
+          category="Earnings"
+          title="The Psychology of Investing: Overcoming Behavioral Biases"
+          excerpt="Learn how to identify and overcome common behavioral biases that can negatively impact your investment decisions. Develop a more rational and disciplined approach to investing."
+          bgClass={styles.psychologyBackground}
+          ariaLabel="Investor psychology concept image"
+          link="/category/earnings"
+        />
       </div>
-      <div className="p-4">
-        <div className="flex items-stretch justify-between gap-4 rounded">
-          <div className="flex flex-col gap-1 flex-[2_2_0px]">
-            <p className="text-[#737578] text-sm font-normal leading-normal">
-              Macro
-            </p>
-            <p className="text-[#141415] text-base font-bold leading-tight">
-              Understanding Monetary Policy: A Guide for Investors
-            </p>
-            <p className="text-[#737578] text-sm font-normal leading-normal">
-              Gain a deeper understanding of how central banks influence the
-              economy and financial markets. Learn how to interpret monetary
-              policy decisions and their potential impact on your investments.
-            </p>
-          </div>
-          <div
-            className={`w-full bg-center bg-no-repeat aspect-video bg-cover rounded flex-1 ${styles.monetaryBackground}`}
-          />
-        </div>
-      </div>
-      <div className="p-4">
-        <div className="flex items-stretch justify-between gap-4 rounded">
-          <div className="flex flex-col gap-1 flex-[2_2_0px]">
-            <p className="text-[#737578] text-sm font-normal leading-normal">
-              Strategy
-            </p>
-            <p className="text-[#141415] text-base font-bold leading-tight">
-              The Psychology of Investing: Overcoming Behavioral Biases
-            </p>
-            <p className="text-[#737578] text-sm font-normal leading-normal">
-              Learn how to identify and overcome common behavioral biases that
-              can negatively impact your investment decisions. Develop a more
-              rational and disciplined approach to investing.
-            </p>
-          </div>
-          <div
-            className={`w-full bg-center bg-no-repeat aspect-video bg-cover rounded flex-1 ${styles.psychologyBackground}`}
-          />
-        </div>
-      </div>
-    </>
+    </section>
   );
 };
 

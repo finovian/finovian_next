@@ -1,13 +1,10 @@
-import React from "react";
+import Link from "next/link";
 import styles from "../../../app/styles/backgrounds.module.css";
 
-import { client } from "@/lib/sanity";
-import { allPostsQuery, postBySlugQuery } from "@/lib/queries";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { PortableText } from "@portabletext/react";
 
-const HeroSection = ({ posts }: any) => {
-  console.log("Sanity Posts:", posts); // ✅ Log here
+
+const HeroSection = () => {
+
   return (
     <div className="@container">
       <div className="@[480px]:p-4">
@@ -25,7 +22,7 @@ const HeroSection = ({ posts }: any) => {
             </h2>
           </div>
           <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#22262a] text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]">
-            <span className="truncate">Start Reading</span>
+            <Link href="/category/stocks">Start Reading</Link>
           </button>
         </div>
       </div>
@@ -33,13 +30,6 @@ const HeroSection = ({ posts }: any) => {
   );
 };
 
-export async function getStaticProps() {
-  const posts = await client.fetch(allPostsQuery);
-  return {
-    props: {
-      posts,
-    },
-  };
-}
+
 
 export default HeroSection;

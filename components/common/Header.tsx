@@ -22,7 +22,7 @@ const Header = () => {
           </svg>
         </div>
         <h2 className="text-[#141415] text-lg font-bold leading-tight tracking-[-0.015em]">
-          Finance Insights
+          Finovian
         </h2>
       </div>
       <div className="flex flex-1 justify-end gap-8">

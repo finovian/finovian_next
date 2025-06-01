@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Footer = () => {
   return (
     <footer className="bg-gray-50 border-t border-gray-200 text-gray-700">
@@ -5,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Info */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">YourBrand</h2>
+            <h2 className="text-2xl font-bold text-gray-900">Finovian</h2>
             <p className="mt-4 text-sm text-gray-600">
               We bring you the best solutions with simplicity and trust.
             </p>
@@ -18,25 +20,22 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="hover:text-black">
+                <Link href="/about" className="hover:text-black">
                   About Us
-                </a>
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/category/stocks" className="hover:text-black">
+                  Stocks
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-black">
-                  Services
-                </a>
+                <Link href="/category/strategy" className="hover:text-black">
+                  Strategy
+                </Link>
               </li>
-              <li>
-                <a href="#" className="hover:text-black">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-black">
-                  Blog
-                </a>
-              </li>
+
             </ul>
           </div>
 
@@ -47,24 +46,24 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="hover:text-black">
+                <Link href="/help" className="hover:text-black">
                   Help Center
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-black">
+                <Link href="/privacy-policy" className="hover:text-black">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-black">
+                <Link href="/terms" className="hover:text-black">
                   Terms of Service
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-black">
+                <Link href="/contact" className="hover:text-black">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -74,8 +73,8 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-gray-800 mb-3">
               Contact Us
             </h3>
-            <p className="text-sm">info@yourbrand.com</p>
-            <p className="text-sm">+1 (234) 567-8901</p>
+            <p className="text-sm">info@finovian.com</p>
+
 
             <div className="flex space-x-4 mt-4">
               <a href="#" className="text-gray-500 hover:text-black transition">
@@ -114,7 +113,7 @@ const Footer = () => {
 
         {/* Bottom Footer */}
         <div className="mt-12 border-t border-gray-200 pt-6 text-sm text-gray-500 text-center">
-          &copy; {new Date().getFullYear()} YourBrand. All rights reserved.
+          &copy; {new Date().getFullYear()} Finovian. All rights reserved.
         </div>
       </div>
     </footer>

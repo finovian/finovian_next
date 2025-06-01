@@ -2,24 +2,26 @@
 
 import { useState } from "react";
 import Link from "next/link";
-// import { Search } from "lucide-react";
 import clsx from "clsx";
 
-const navLinks = ["Home", "Stocks", "Strategy", "Macro", "About"];
+const navLinks = ["Stocks", "Strategy", "Macro",];
 
 export default function FinancialNavbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  // const [searchOpen, setSearchOpen] = useState(false);
-
   return (
-    <nav className="fixed top-0 w-full bg-white shadow-md z-50 border-b border-gray-100">
+    <nav className="fixed top-0 w-full bg-white z-50 border-b border-gray-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-10 py-3 flex justify-between items-center">
         <div className="text-2xl font-bold text-[#0a2540] tracking-wide">
-          FinScope
+          <Link href="/">
+            Finovian
+          </Link>
         </div>
 
-        {/* Desktop Navigation */}
+
         <div className="hidden lg:flex items-center gap-8">
+          <Link href="/" className="text-[#1a202c] hover:text-[#0a2540] font-medium transition">
+            Home
+          </Link>
           {navLinks.map((link) => (
             <Link
               key={link}
@@ -29,55 +31,19 @@ export default function FinancialNavbar() {
               {link}
             </Link>
           ))}
+          <Link href="/about" className="text-[#1a202c] hover:text-[#0a2540] font-medium transition">
+            About
+          </Link>
 
-          {/* <div className="relative flex items-center space-x-2">
-            <button
-              onClick={() => setSearchOpen(!searchOpen)}
-              aria-label="Toggle Search"
-              className="text-[#0a2540]"
-            >
-              <Search size={22} />
-            </button>
-            {searchOpen && (
-              <input
-                type="text"
-                placeholder="Search insights..."
-                className="border-b border-gray-300 focus:border-[#0a2540] outline-none px-2 py-1 text-sm text-[#1a202c] transition-all"
-              />
-            )}
-          </div> */}
         </div>
 
-        {/* Mobile Controls */}
         <div className="flex lg:hidden items-center space-x-4">
-          {/* <button
-            onClick={() => setSearchOpen(!searchOpen)}
-            aria-label="Search"
-          >
-            <Search className="text-[#0a2540]" size={24} />
-          </button> */}
+
           <Hamburger isOpen={menuOpen} toggle={() => setMenuOpen(!menuOpen)} />
         </div>
       </div>
 
-      {/* Mobile Search Box */}
-      {/* <div
-        className={clsx(
-          "lg:hidden px-6 transition-all duration-300 overflow-hidden",
-          searchOpen
-            ? "max-h-28 py-3 border-t border-gray-100 bg-white"
-            : "max-h-0"
-        )}
-      >
-        <input
-          type="text"
-          placeholder="Search insights..."
-          autoFocus
-          className="w-full border-b border-gray-300 focus:border-[#0a2540] outline-none px-2 py-2 text-base"
-        />
-      </div> */}
 
-      {/* Mobile Navigation */}
       <div
         className={clsx(
           "lg:hidden overflow-hidden transition-all duration-300 border-t border-gray-100 bg-white",
@@ -85,6 +51,7 @@ export default function FinancialNavbar() {
         )}
       >
         <div className="flex flex-col items-center space-y-4">
+          <Link href="/" className="text-[#1a202c] font-medium">Home</Link>
           {navLinks.map((link) => (
             <Link
               key={link}
@@ -95,6 +62,7 @@ export default function FinancialNavbar() {
               {link}
             </Link>
           ))}
+          <Link href="/about" className="text-[#1a202c] font-medium">About</Link>
         </div>
       </div>
     </nav>
