@@ -1,6 +1,8 @@
+'use client'
 import React from "react";
 import styles from "../../../app/styles/backgrounds.module.css";
 import Link from "next/link";
+import { useArticles, } from "@/hooks/usePost";
 
 const PostCard = ({
   category,
@@ -20,9 +22,11 @@ const PostCard = ({
   <article className="flex flex-col md:flex-row items-stretch justify-between gap-4 rounded-lg p-4 bg-white shadow-sm">
     <div className="flex flex-col gap-2 flex-[2_2_0px]">
       <p className="text-[#737578] text-sm font-normal">{category}</p>
-      <h3 className="text-[#141415] text-base font-bold leading-tight">
-        {title}
-      </h3>
+      <Link href={link}>
+        <h3 className="text-[#141415] hover:underline text-base font-bold leading-tight">
+          {title}
+        </h3>
+      </Link>
       <p className="text-[#737578] text-sm font-normal">{excerpt}</p>
       <Link
         href={link}
@@ -41,6 +45,9 @@ const PostCard = ({
 );
 
 const LatestPosts = () => {
+  const { articles } = useArticles()
+
+  console.log('post', articles)
   return (
     <section className="px-4 py-6">
       <h2 className="text-[#141415] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">
