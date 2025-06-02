@@ -1,10 +1,7 @@
 import Link from "next/link";
 import styles from "../../../app/styles/backgrounds.module.css";
 
-
-
 const HeroSection = () => {
-
   return (
     <div className="@container">
       <div className="@[480px]:p-4">
@@ -29,7 +26,5 @@ const HeroSection = () => {
     </div>
   );
 };
-
-
 
 export default HeroSection;

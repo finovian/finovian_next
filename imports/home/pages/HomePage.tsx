@@ -4,7 +4,6 @@ import FeaturedArticle from "../components/FeaturedArticle";
 import LatestPosts from "../components/LatestPosts";
 import CategoryHighlights from "../components/CategoryHighlights";
 
-
 const HomePage = () => {
   return (
     <>
