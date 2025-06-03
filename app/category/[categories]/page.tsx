@@ -3,15 +3,17 @@ import { postsByCategorySlugQuery } from "@/lib/queries";
 import { client } from "@/lib/sanity";
 
 type Props = {
-  params: {
+  params: Promise<{
     categories: string;
     article: string;
-  };
+  }>;
 };
 
 export default async function CategoryPage({ params }: Props) {
+  const resolvedParams = await params;
+
   const posts = await client.fetch(postsByCategorySlugQuery, {
-    slug: `/${params.categories}`,
+    slug: `/${resolvedParams.categories}`,
   });
 
   return <ArticlesByCategory posts={posts} />;
