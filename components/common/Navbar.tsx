@@ -4,65 +4,73 @@ import { useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
-const navLinks = ["Stocks", "Strategy", "Macro",];
+type Category = {
+  _id: string;
+  title: string;
+  slug: { current: string };
+};
 
-export default function FinancialNavbar() {
+type Props = {
+  categories: Category[];
+};
+
+export default function FinancialNavbar({ categories }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const NavLink = ({ href, label }: { href: string; label: string }) => (
+    <Link
+      href={href}
+      className="text-[#1a202c] hover:text-[#0a2540] font-medium transition"
+      onClick={() => setMenuOpen(false)}
+    >
+      {label}
+    </Link>
+  );
+
   return (
     <nav className="fixed top-0 w-full bg-white z-50 border-b border-gray-100 shadow-sm">
-      <div className="max-w-7xl mx-auto px-10 py-3 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 py-3 flex justify-between items-center">
+        {/* Logo */}
         <div className="text-2xl font-bold text-[#0a2540] tracking-wide">
-          <Link href="/">
-            Finovian
-          </Link>
+          <Link href="/">Finovian</Link>
         </div>
 
-
-        <div className="hidden lg:flex items-center gap-8">
-          <Link href="/" className="text-[#1a202c] hover:text-[#0a2540] font-medium transition">
-            Home
-          </Link>
-          {navLinks.map((link) => (
-            <Link
-              key={link}
-              href={`/category/${link.toLowerCase()}`}
-              className="text-[#1a202c] hover:text-[#0a2540] font-medium transition"
-            >
-              {link}
-            </Link>
+        {/* Desktop Nav */}
+        <div className="hidden lg:flex items-center gap-6">
+          <NavLink href="/" label="Home" />
+          {categories.map((cat) => (
+            <NavLink
+              key={cat._id}
+              href={`/category/${cat.slug.current}`}
+              label={cat.title}
+            />
           ))}
-          <Link href="/about" className="text-[#1a202c] hover:text-[#0a2540] font-medium transition">
-            About
-          </Link>
-
+          <NavLink href="/about" label="About" />
         </div>
 
-        <div className="flex lg:hidden items-center space-x-4">
-
+        {/* Mobile Menu Button */}
+        <div className="flex lg:hidden items-center">
           <Hamburger isOpen={menuOpen} toggle={() => setMenuOpen(!menuOpen)} />
         </div>
       </div>
 
-
+      {/* Mobile Nav Menu */}
       <div
         className={clsx(
           "lg:hidden overflow-hidden transition-all duration-300 border-t border-gray-100 bg-white",
-          menuOpen ? "max-h-screen py-6" : "max-h-0"
+          menuOpen ? "max-h-screen py-4" : "max-h-0"
         )}
       >
         <div className="flex flex-col items-center space-y-4">
-          <Link href="/" className="text-[#1a202c] font-medium">Home</Link>
-          {navLinks.map((link) => (
-            <Link
-              key={link}
-              href={`/category/${link.toLowerCase()}`}
-              className="text-[#1a202c] font-medium"
-              onClick={() => setMenuOpen(false)}
-            >
-              {link}
-            </Link>
+          <NavLink href="/" label="Home" />
+          {categories.map((cat) => (
+            <NavLink
+              key={cat._id}
+              href={`/category/${cat.slug.current}`}
+              label={cat.title}
+            />
           ))}
-          <Link href="/about" className="text-[#1a202c] font-medium">About</Link>
+          <NavLink href="/about" label="About" />
         </div>
       </div>
     </nav>

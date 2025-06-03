@@ -61,7 +61,9 @@ const articles = [
   },
 ];
 
-const ArticlesByCategory = () => {
+const ArticlesByCategory = ({ posts }: any) => {
+  console.log("posts", posts);
+
   return (
     <div className="bg-white text-[#1a1a1a] min-h-screen">
       <div className="max-w-3xl mx-auto px-4 py-12">

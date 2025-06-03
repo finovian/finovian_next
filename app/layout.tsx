@@ -6,6 +6,7 @@ import { Inter, Merriweather } from "next/font/google";
 import Footer from "@/components/common/Footer";
 import FinancialNavbar from "@/components/common/Navbar";
 import NewsLatter from "@/components/common/NewsLatter";
+import { getAllCategories } from "@/lib/queries";
 
 export const metadata = {
   title: "Finovian - Smart US Finance Insights",
@@ -35,18 +36,20 @@ const merriweather = Merriweather({
   variable: "--font-merriweather",
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const categories = await getAllCategories();
+
   return (
     <html lang="en" className={`${inter.variable} ${merriweather.variable}`}>
       <body className="font-sans" aria-label="Finovian blog layout">
         <Providers>
           <div className="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden">
             <div className="layout-container flex h-full grow flex-col">
-              <FinancialNavbar />
+              <FinancialNavbar categories={categories} />
               <div className="px-0 mt-[55px] flex flex-1 justify-center py-5">
                 <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
                   {children}

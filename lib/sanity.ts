@@ -1,10 +1,13 @@
 import { createClient } from "@sanity/client";
 
-export const client = createClient({
-  projectId: "eumx4wot",
-  dataset: "jay-dataset", // 👈 Or your actual dataset
-  apiVersion: "2023-01-01", // 👈 Use the same version across the app
+const config = {
+  projectId: "ju8y98v2",
+  dataset: "production",
+  apiVersion: "2023-01-01",
+
   useCdn: false,
   token:
-    "skWRcSjhgm7O5tdBUsNPVNlwL3TXjmY7fAN0HJeJL3UX4qyyDQeX3rxiIfwsiFfHoUg43sHjZu7FOxV3pqpJwjwWycvoXvVVK8QH77g4SSG98XAEmEAtfLvm8ONxI3fCdoIi1c9saswDxt9SbQ6L696LZQu7alpl4SbfXwYYt3DEwMJTP8pa",
-});
+    "skJPWCHKu2ibiDy9IuQIF7iOQFi5gIlmqvAZBP6N3P2skXE99RTonG3utWEkDImXVyOkhsdiAi2oHzhz4kqYMdj16x2sDVd0M0MHokYShpojKRae2eH6YTxMWTxlXa20dKyGFwQcDVfbUCShipdoviL07mrs0FDC1UJfG0C4TdjAzG4AVwf4",
+};
+
+export const client = createClient(config);
