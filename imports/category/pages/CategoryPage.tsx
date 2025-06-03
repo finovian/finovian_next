@@ -12,7 +12,7 @@ const articles = [
       "Mental models help simplify complex decisions. Learn how to use them to become a smarter investor.",
     date: "May 30, 2025",
     readingTime: "6 min read",
-    slug: "/category/stocks/mental-models-investing",
+    slug: "/category/stocks/nvidia-stock-analysis2",
   },
   {
     id: 2,
@@ -48,7 +48,7 @@ const articles = [
       "Trying to time the market rarely works. Here's why consistency and patience matter most.",
     date: "May 28, 2025",
     readingTime: "5 min read",
-    slug: "/category/stocks/mental-models-investing",
+    slug: "/category/stocks/nvidia-stock-analysis2",
   },
   {
     id: 6,
@@ -57,7 +57,7 @@ const articles = [
       "Compounding can turn small investments into huge returns — if you give it enough time.",
     date: "May 25, 2025",
     readingTime: "7 min read",
-    slug: "/category/stocks/mental-models-investing",
+    slug: "/category/stocks/nvidia-stock-analysis2",
   },
 ];
 
