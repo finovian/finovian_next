@@ -1,8 +1,25 @@
 import { PortableText, PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
 import React from "react";
+import type { PortableTextBlock } from "@portabletext/types";
 
-const ArticlesPage = ({ post }: any) => {
+type Post = {
+  title: string;
+  publishedAt: string;
+  mainImage?: {
+    asset?: {
+      url?: string;
+    };
+    alt?: string;
+  };
+  body: PortableTextBlock[];
+  author?: {
+    name?: string;
+  };
+  categories?: { title: string }[];
+};
+
+const ArticlesPage = ({ post }: { post: Post }) => {
   const components: PortableTextComponents = {
     types: {
       image: ({ value }) => {
@@ -29,7 +46,7 @@ const ArticlesPage = ({ post }: any) => {
   };
 
   return (
-    <main className="max-w-3xl mx-auto py-10 px-4">
+    <main className="max-w-3xl mx-auto py-10 px-4 custom-padding">
       <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
       <p className="text-sm text-gray-500 mb-4">
         {new Date(post.publishedAt).toDateString()}
@@ -51,7 +68,7 @@ const ArticlesPage = ({ post }: any) => {
 
       <div className="mt-10 text-sm text-gray-700">
         <p>Author: {post.author?.name}</p>
-        {post.categories?.length > 0 && (
+        {Array.isArray(post.categories) && post.categories.length > 0 && (
           <p>
             Categories:{" "}
             {post.categories

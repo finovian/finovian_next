@@ -38,3 +38,12 @@ body {
   font-weight: 500;
   font-style: normal;
 }
+
+@media (max-width: 786px) {
+  .custom-padding {
+    padding-left: 15rem
+      /* 60 */
+    ;
+    padding-right: 15rem;
+  }
+}

@@ -5,6 +5,10 @@ export const singlePostQuery = `
     title,
     "slug": slug.current,
     publishedAt,
+    excerpt,
+    tags,
+    seoDescription,
+    seoTitle,
     body,
     mainImage {
       asset-> {
@@ -43,29 +47,32 @@ export const latestPostsQuery = `*[_type == "post"] | order(publishedAt desc)[0.
   }
 }`;
 
-export const featuredPostsQuery = `*[_type == "post" && featured == true] | order(publishedAt desc)[0...5] {
-  _id,
-  title,
-  slug,
-  publishedAt,
-  mainImage,
-  "author": author->{
-    name,
-    image
-  },
-  categories[]->{
+export const featuredPostsQuery = `*[_type == "post" && featured == true] 
+  | order(featuredPriority desc, publishedAt desc)[0...5] {
+    _id,
     title,
-    slug
-  }
-}`;
+    slug,
+    publishedAt,
+    featuredPriority,
+    mainImage,
+    "author": author->{
+      name,
+      image
+    },
+    categories[]->{
+      title,
+      slug
+    }
+  }`;
 
-export const allCategoriesQuery = `*[_type == "category"] {
-  _id,
-  title,
-  slug,
-  description,
-  iconName
-}`;
+export const allCategoriesQuery = `*[_type == "category"] | order(priority asc) {
+    _id,
+    title,
+    slug,
+    description,
+    iconName,
+    priority
+  }`;
 
 export const postsByCategorySlugQuery = `
   *[_type == "post" && $slug in categories[]->slug.current] | order(publishedAt desc) {
@@ -73,6 +80,11 @@ export const postsByCategorySlugQuery = `
     title,
     slug,
     mainImage,
+    seoDescription,
+    readingTime,
+    excerpt,
+    seoTitle,
+    tags,
     publishedAt,
     description,
     categories[]->{
