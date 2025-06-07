@@ -95,6 +95,17 @@ export const postsByCategorySlugQuery = `
   }
 `;
 
+export const authorQuery = `*[_type == "author"][0]{
+  name,
+  slug,
+  bio,
+  philosophy,
+  about,
+  "imageUrl": image.asset->url,
+  "imageAlt": image.alt,
+  social
+}`;
+
 export const searchPostsQuery = (query: string) => `
 *[_type == "post" && (
   title match "${query}*" ||

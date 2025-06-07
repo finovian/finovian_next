@@ -92,7 +92,17 @@ export default async function ArticlePage({ params }: Props) {
         />
       </Head>
 
-      <ArticlesPage post={post} />
+      <ArticlesPage
+        post={post}
+        nextArticle={{
+          title: "Next Big Stock Insight",
+          slug: "next-big-stock-insight",
+        }}
+        readMoreArticles={[
+          { title: "Investing Basics ", slug: "investing-basics" },
+          { title: "Financial Planning 101", slug: "financial-planning-101" },
+        ]}
+      />
     </>
   );
 }

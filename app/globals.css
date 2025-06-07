@@ -41,9 +41,9 @@ body {
 
 @media (max-width: 786px) {
   .custom-padding {
-    padding-left: 15rem
+    padding-left: 12rem
       /* 60 */
     ;
-    padding-right: 15rem;
+    padding-right: 12rem;
   }
 }
