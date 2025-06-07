@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import styles from "../../app/styles/backgrounds.module.css";
+import styles from "../../styles/backgrounds.module.css";
 import Link from "next/link";
 import imageUrlBuilder from "@sanity/image-url";
 import type { Image } from "@sanity/types";
