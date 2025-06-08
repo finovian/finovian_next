@@ -20,6 +20,10 @@ export default function FinancialNavbar({ categories }: Props) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [loginOpen, setLoginOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
+
 
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -206,6 +210,7 @@ export default function FinancialNavbar({ categories }: Props) {
         </div>
       </nav>
 
+
       {/* Subscribe Modal */}
       {loginOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/20">
@@ -215,30 +220,84 @@ export default function FinancialNavbar({ categories }: Props) {
           >
             <button
               className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition"
-              onClick={() => setLoginOpen(false)}
+              onClick={() => {
+                setLoginOpen(false);
+                setStatus('idle');
+                setEmail('');
+                setErrorMsg('');
+              }}
               aria-label="Close"
             >
               <X className="w-5 h-5" />
             </button>
 
             <h2 className="text-xl font-semibold text-[#0a2540] mb-4">Subscribe</h2>
+
             <input
               type="email"
               placeholder="Email address"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none transition text-sm mb-4"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={status === 'loading' || status === 'success'}
             />
+
+            {status === 'error' && (
+              <p className="text-red-600 text-sm mb-2">{errorMsg || 'Something went wrong'}</p>
+            )}
+
+            {status === 'success' && (
+              <p className="text-green-600 text-sm mb-2">Thank you for subscribing!</p>
+            )}
+
             <button
-              className="w-full bg-black hover:bg-[#0a2540] text-white py-2 rounded-md transition font-medium text-sm"
-              onClick={() => {
-                console.log("Subscribed...");
-                setLoginOpen(false);
+              className={`w-full py-2 rounded-md transition font-medium text-sm ${status === 'loading'
+                ? 'bg-gray-400 cursor-not-allowed text-gray-700'
+                : 'bg-black hover:bg-[#0a2540] text-white'
+                }`}
+              onClick={async () => {
+                if (!email || !email.includes('@')) {
+                  setStatus('error');
+                  setErrorMsg('Please enter a valid email address');
+                  return;
+                }
+                setStatus('loading');
+                setErrorMsg('');
+
+                try {
+                  const res = await fetch('/api/subscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email }),
+                  });
+
+                  const data = await res.json();
+
+                  if (!res.ok) {
+                    setStatus('error');
+                    setErrorMsg(data.error || 'Subscription failed');
+                  } else {
+                    setStatus('success');
+                    setEmail('');
+                    // Optional: auto-close modal after success
+                    setTimeout(() => {
+                      setLoginOpen(false);
+                      setStatus('idle');
+                    }, 2000);
+                  }
+                } catch (err) {
+                  setStatus('error');
+                  setErrorMsg('Network error. Please try again.');
+                }
               }}
+              disabled={status === 'loading' || status === 'success'}
             >
-              Continue
+              {status === 'loading' ? 'Submitting...' : 'Continue'}
             </button>
           </div>
         </div>
       )}
+
     </>
   );
 }
