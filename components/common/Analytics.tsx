@@ -17,7 +17,7 @@ export function GoogleAnalytics() {
           non_interaction: true,
         });
       }
-      
+
       // Send to custom analytics endpoint
       if (process.env.NEXT_PUBLIC_ANALYTICS_ENDPOINT) {
         fetch(process.env.NEXT_PUBLIC_ANALYTICS_ENDPOINT, {
@@ -123,19 +123,17 @@ export const useScrollDepthTracking = () => {
     let maxScroll = 0;
     const thresholds = [25, 50, 75, 90, 100];
     const tracked = new Set();
-    
+
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
-      
-      const scrollPercent = Math.round(
-        ((scrollTop + windowHeight) / documentHeight) * 100
-      );
-      
+
+      const scrollPercent = Math.round(((scrollTop + windowHeight) / documentHeight) * 100);
+
       if (scrollPercent > maxScroll) {
         maxScroll = scrollPercent;
-        
+
         // Track milestone thresholds
         thresholds.forEach((threshold) => {
           if (scrollPercent >= threshold && !tracked.has(threshold)) {
@@ -149,9 +147,9 @@ export const useScrollDepthTracking = () => {
         });
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -162,7 +160,7 @@ export const useScrollDepthTracking = () => {
 export const useTimeOnPageTracking = () => {
   useEffect(() => {
     const startTime = Date.now();
-    
+
     const trackTimeOnPage = () => {
       const timeOnPage = Date.now() - startTime;
       trackEvent('time_on_page', {
@@ -173,15 +171,15 @@ export const useTimeOnPageTracking = () => {
         },
       });
     };
-    
+
     // Track on page unload
     window.addEventListener('beforeunload', trackTimeOnPage);
-    
+
     // Track at intervals for long sessions
     const interval = setInterval(() => {
       trackTimeOnPage();
     }, 30000); // Every 30 seconds
-    
+
     return () => {
       window.removeEventListener('beforeunload', trackTimeOnPage);
       clearInterval(interval);
@@ -195,4 +193,3 @@ declare global {
     gtag: (...args: unknown[]) => void;
   }
 }
-

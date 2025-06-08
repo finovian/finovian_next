@@ -1,4 +1,4 @@
-import { client } from "./sanity";
+import { client } from './sanity';
 
 export const singlePostQuery = `
   *[_type == "post" && slug.current == $slug][0]{

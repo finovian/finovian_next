@@ -33,7 +33,7 @@ class ErrorBoundary extends Component<Props, State> {
     if (process.env.NODE_ENV === 'development') {
       console.error('Error caught by ErrorBoundary:', error, errorInfo);
     }
-    
+
     // Send to error tracking service (e.g., Sentry)
     if (process.env.NODE_ENV === 'production') {
       // Add your error tracking service here
@@ -47,12 +47,12 @@ class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div 
-          className="min-h-screen flex items-center justify-center bg-gray-50"
+        <div
+          className="flex min-h-screen items-center justify-center bg-gray-50"
           role="alert"
           aria-live="assertive"
         >
-          <div className="max-w-md mx-auto text-center px-4">
+          <div className="mx-auto max-w-md px-4 text-center">
             <div className="mb-4">
               <svg
                 className="mx-auto h-12 w-12 text-red-500"
@@ -69,26 +69,24 @@ class ErrorBoundary extends Component<Props, State> {
                 />
               </svg>
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
-              Something went wrong
-            </h1>
-            <p className="text-gray-600 mb-4">
+            <h1 className="mb-2 text-2xl font-bold text-gray-900">Something went wrong</h1>
+            <p className="mb-4 text-gray-600">
               We apologize for the inconvenience. Please try refreshing the page.
             </p>
             <button
               onClick={() => window.location.reload()}
-              className="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+              className="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
               aria-label="Refresh the page"
             >
               Refresh Page
             </button>
-            
+
             {process.env.NODE_ENV === 'development' && this.state.error && (
               <details className="mt-6 text-left">
                 <summary className="cursor-pointer text-sm text-gray-500 hover:text-gray-700">
                   Show Error Details
                 </summary>
-                <pre className="mt-2 text-xs text-red-600 bg-red-50 p-3 rounded overflow-auto">
+                <pre className="mt-2 overflow-auto rounded bg-red-50 p-3 text-xs text-red-600">
                   {this.state.error.toString()}
                   {this.state.errorInfo?.componentStack}
                 </pre>
@@ -104,4 +102,3 @@ class ErrorBoundary extends Component<Props, State> {
 }
 
 export default ErrorBoundary;
-

@@ -1,14 +1,14 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   // Enable experimental features for better performance
   experimental: {
     optimizePackageImports: [
-      'lucide-react', 
-      '@sanity/client', 
+      'lucide-react',
+      '@sanity/client',
       'framer-motion',
       '@tanstack/react-query',
-      'react-markdown'
+      'react-markdown',
     ],
     webVitalsAttribution: ['CLS', 'LCP'],
     scrollRestoration: true,

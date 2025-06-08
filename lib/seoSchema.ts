@@ -231,12 +231,14 @@ export function generateLocalBusinessSchema() {
 }
 
 // Review Schema for testimonials
-export function generateReviewSchema(reviews: Array<{
-  author: string;
-  rating: number;
-  reviewBody: string;
-  datePublished: string;
-}>) {
+export function generateReviewSchema(
+  reviews: Array<{
+    author: string;
+    rating: number;
+    reviewBody: string;
+    datePublished: string;
+  }>
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',

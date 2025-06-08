@@ -1,5 +1,5 @@
-import Link from "next/link";
-import React, { JSX } from "react";
+import Link from 'next/link';
+import React, { JSX } from 'react';
 
 const catIcon: Record<string, JSX.Element> = {
   Stocks: (
@@ -66,31 +66,26 @@ const CategoryHighlights = ({ caetegories }: LatestPostsProps) => {
   return (
     <section
       aria-labelledby="category-highlights-heading"
-      className="w-full max-w-screen-xl mx-auto px-4 py-6"
+      className="mx-auto w-full max-w-screen-xl px-4 py-6"
     >
       <h2
         id="category-highlights-heading"
-        className="text-[#141415] text-xl sm:text-2xl font-bold leading-tight tracking-[-0.015em] mb-4"
+        className="mb-4 text-xl leading-tight font-bold tracking-[-0.015em] text-[#141415] sm:text-2xl"
       >
         Category Highlights
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {caetegories.map((cat) => (
           <Link
             key={cat.title}
             href={cat.slug.current}
-
-            className="rounded border border-[#e0e0e1] bg-white p-4 flex flex-col gap-3 hover:shadow transition"
+            className="flex flex-col gap-3 rounded border border-[#e0e0e1] bg-white p-4 transition hover:shadow"
             aria-label={cat.title}
           >
             <span className="text-[#141415]">{catIcon[cat.title]}</span>
             <div className="flex flex-col gap-1">
-              <h3 className="text-[#141415] text-base font-bold leading-tight">
-                {cat.title}
-              </h3>
-              <p className="text-[#737578] text-sm font-normal leading-normal">
-                {cat.description}
-              </p>
+              <h3 className="text-base leading-tight font-bold text-[#141415]">{cat.title}</h3>
+              <p className="text-sm leading-normal font-normal text-[#737578]">{cat.description}</p>
             </div>
           </Link>
         ))}

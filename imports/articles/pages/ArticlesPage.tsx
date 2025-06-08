@@ -1,8 +1,8 @@
-import { PortableText, PortableTextComponents } from "@portabletext/react";
-import Image from "next/image";
-import React from "react";
-import type { PortableTextBlock } from "@portabletext/types";
-import { getImageUrl } from "@/lib/sanity";
+import { PortableText, PortableTextComponents } from '@portabletext/react';
+import Image from 'next/image';
+import React from 'react';
+import type { PortableTextBlock } from '@portabletext/types';
+import { getImageUrl } from '@/lib/sanity';
 
 type Category = { title: string };
 type Author = { name?: string };
@@ -50,7 +50,7 @@ const ArticlesPage = ({ post, readMoreArticles }: Props) => {
           <div className="my-4">
             <Image
               src={imageUrl}
-              alt={value.alt || "Post image"}
+              alt={value.alt || 'Post image'}
               width={800}
               height={450}
               className="rounded-lg"
@@ -62,19 +62,17 @@ const ArticlesPage = ({ post, readMoreArticles }: Props) => {
   };
 
   return (
-    <main className="max-w-3xl mx-auto py-10 px-4 custom-padding">
-      <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
-      <p className="text-sm text-gray-500 mb-4">
-        {new Date(post.publishedAt).toDateString()}
-      </p>
+    <main className="custom-padding mx-auto max-w-3xl px-4 py-10">
+      <h1 className="mb-2 text-4xl font-bold">{post.title}</h1>
+      <p className="mb-4 text-sm text-gray-500">{new Date(post.publishedAt).toDateString()}</p>
 
       {post.mainImage && (
         <Image
           src={getImageUrl.hero(post.mainImage)}
-          alt={post.mainImage.alt || "Post image"}
+          alt={post.mainImage.alt || 'Post image'}
           width={800}
           height={450}
-          className="rounded-md mb-6"
+          className="mb-6 rounded-md"
         />
       )}
 
@@ -85,25 +83,22 @@ const ArticlesPage = ({ post, readMoreArticles }: Props) => {
       <div className="mt-10 text-sm text-gray-700">
         <p>Author: {post.author?.name}</p>
         {Array.isArray(post.categories) && post.categories.length > 0 && (
-          <p>
-            Categories: {post.categories.map((cat) => cat.title).join(", ")}
-          </p>
+          <p>Categories: {post.categories.map((cat) => cat.title).join(', ')}</p>
         )}
       </div>
 
       {readMoreArticles && readMoreArticles.length > 0 && (
-        <section className="mt-16 p-6 border-t border-gray-300">
-          <h2 className="text-2xl font-semibold mb-4 text-black">
-            Read More
-          </h2>
-          <ul className="list-disc list-inside space-y-2">
+        <section className="mt-16 border-t border-gray-300 p-6">
+          <h2 className="mb-4 text-2xl font-semibold text-black">Read More</h2>
+          <ul className="list-inside list-disc space-y-2">
             {readMoreArticles.map((article) => (
               <li key={article.slug.current}>
                 <a
-                  href={`${(article.categories?.[0]?.slug?.current?.startsWith("/")
-                    ? article.categories?.[0]?.slug?.current
-                    : `/${article.categories?.[0]?.slug?.current || "general"}`
-                  )}/${article.slug.current}`}
+                  href={`${
+                    article.categories?.[0]?.slug?.current?.startsWith('/')
+                      ? article.categories?.[0]?.slug?.current
+                      : `/${article.categories?.[0]?.slug?.current || 'general'}`
+                  }/${article.slug.current}`}
                   className="text-black hover:underline"
                 >
                   {article.title}

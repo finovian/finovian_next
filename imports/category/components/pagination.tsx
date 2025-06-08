@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Pagination = () => {
   return (
@@ -22,19 +22,19 @@ const Pagination = () => {
         </div>
       </a>
       <a
-        className="text-sm font-bold leading-normal tracking-[0.015em] flex size-10 items-center justify-center text-[#141414] rounded-full bg-[#ededed]"
+        className="flex size-10 items-center justify-center rounded-full bg-[#ededed] text-sm leading-normal font-bold tracking-[0.015em] text-[#141414]"
         href="#"
       >
         1
       </a>
       <a
-        className="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#141414] rounded-full"
+        className="flex size-10 items-center justify-center rounded-full text-sm leading-normal font-normal text-[#141414]"
         href="#"
       >
         2
       </a>
       <a
-        className="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#141414] rounded-full"
+        className="flex size-10 items-center justify-center rounded-full text-sm leading-normal font-normal text-[#141414]"
         href="#"
       >
         Next

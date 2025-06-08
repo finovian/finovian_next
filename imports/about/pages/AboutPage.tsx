@@ -1,94 +1,80 @@
-import React from "react";
+import React from 'react';
 
 const AboutPage = () => {
   return (
-    <main className="min-h-screen bg-white text-gray-800 px-4 md:px-16 py-12">
-      <section className="max-w-5xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 text-black">
-          About Us
-        </h1>
-        <p className="text-lg md:text-xl text-center text-gray-600 max-w-3xl mx-auto mb-12">
-          Empowering Smart Investors with Actionable Stock Insights. We simplify
-          the complex world of US stock market analysis through data-driven
-          tools and expert content.
+    <main className="min-h-screen bg-white px-4 py-12 text-gray-800 md:px-16">
+      <section className="mx-auto max-w-5xl">
+        <h1 className="mb-8 text-center text-4xl font-bold text-black md:text-5xl">About Us</h1>
+        <p className="mx-auto mb-12 max-w-3xl text-center text-lg text-gray-600 md:text-xl">
+          Empowering Smart Investors with Actionable Stock Insights. We simplify the complex world
+          of US stock market analysis through data-driven tools and expert content.
         </p>
 
-        <section className="grid md:grid-cols-2 gap-8 mb-16">
+        <section className="mb-16 grid gap-8 md:grid-cols-2">
           <div>
-            <h2 className="text-2xl font-semibold mb-4 text-black">
-              Our Mission
-            </h2>
-            <p className="text-gray-700 leading-relaxed">
-              To make stock analysis accessible, reliable, and insightful for
-              everyone — from beginners to seasoned traders. We believe smart
-              investment decisions begin with smart data.
+            <h2 className="mb-4 text-2xl font-semibold text-black">Our Mission</h2>
+            <p className="leading-relaxed text-gray-700">
+              To make stock analysis accessible, reliable, and insightful for everyone — from
+              beginners to seasoned traders. We believe smart investment decisions begin with smart
+              data.
             </p>
           </div>
           <div>
-            <h2 className="text-2xl font-semibold mb-4 text-black">
-              Why Choose Us
-            </h2>
-            <p className="text-gray-700 leading-relaxed">
-              Unlike generic finance platforms, we focus exclusively on the US
-              stock market, blending professional-level analytics with
-              simplicity. Save time. Invest smarter.
+            <h2 className="mb-4 text-2xl font-semibold text-black">Why Choose Us</h2>
+            <p className="leading-relaxed text-gray-700">
+              Unlike generic finance platforms, we focus exclusively on the US stock market,
+              blending professional-level analytics with simplicity. Save time. Invest smarter.
             </p>
           </div>
         </section>
 
         <section className="mb-16">
-          <h2 className="text-2xl font-semibold mb-6 text-black text-center">
-            What We Offer
-          </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <h2 className="mb-6 text-center text-2xl font-semibold text-black">What We Offer</h2>
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {[
-              "Real-time stock data & analytics",
-              "In-depth company financials & ratios",
-              "Market insights & trending news",
-              "Portfolio tracking tools",
-              "Technical and fundamental analysis",
-              "Investor education & guides",
+              'Real-time stock data & analytics',
+              'In-depth company financials & ratios',
+              'Market insights & trending news',
+              'Portfolio tracking tools',
+              'Technical and fundamental analysis',
+              'Investor education & guides',
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="bg-gray-50 border border-gray-200 p-4 rounded-xl shadow-sm hover:shadow-md transition"
+                className="rounded-xl border border-gray-200 bg-gray-50 p-4 shadow-sm transition hover:shadow-md"
               >
-                <p className="text-gray-700 font-medium">{item}</p>
+                <p className="font-medium text-gray-700">{item}</p>
               </div>
             ))}
           </div>
         </section>
 
         <section className="mb-16">
-          <h2 className="text-2xl font-semibold mb-6 text-black text-center">
-            Our Values
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <h2 className="mb-6 text-center text-2xl font-semibold text-black">Our Values</h2>
+          <div className="grid gap-6 sm:grid-cols-2">
             {[
               {
-                title: "Transparency",
-                desc: "We stand by data you can trust.",
+                title: 'Transparency',
+                desc: 'We stand by data you can trust.',
               },
               {
-                title: "Education First",
-                desc: "We don’t just give numbers — we explain them.",
+                title: 'Education First',
+                desc: 'We don’t just give numbers — we explain them.',
               },
               {
-                title: "User-Centric Design",
-                desc: "Tools built for clarity and ease of use.",
+                title: 'User-Centric Design',
+                desc: 'Tools built for clarity and ease of use.',
               },
               {
-                title: "Independent Analysis",
-                desc: "No fluff. No hype. Just facts.",
+                title: 'Independent Analysis',
+                desc: 'No fluff. No hype. Just facts.',
               },
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-gray-200 p-5 rounded-lg shadow-sm hover:shadow-md transition"
+                className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition hover:shadow-md"
               >
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                  {item.title}
-                </h3>
+                <h3 className="mb-2 text-lg font-semibold text-gray-800">{item.title}</h3>
                 <p className="text-gray-600">{item.desc}</p>
               </div>
             ))}
@@ -96,10 +82,9 @@ const AboutPage = () => {
         </section>
 
         <section className="text-center">
-          <p className="text-sm text-gray-500 italic max-w-xl mx-auto">
-            Disclaimer: Finovian is not a registered investment advisor. All
-            content is for educational purposes only. Do your own research
-            before making financial decisions.
+          <p className="mx-auto max-w-xl text-sm text-gray-500 italic">
+            Disclaimer: Finovian is not a registered investment advisor. All content is for
+            educational purposes only. Do your own research before making financial decisions.
           </p>
         </section>
       </section>

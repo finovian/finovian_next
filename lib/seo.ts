@@ -5,7 +5,8 @@ import type { Image } from '@sanity/types';
 // Site configuration
 export const siteConfig = {
   name: 'Finovian',
-  description: 'Expert financial insights, stock analysis, and investment strategies. Stay ahead with our comprehensive market analysis and AI-driven financial content.',
+  description:
+    'Expert financial insights, stock analysis, and investment strategies. Stay ahead with our comprehensive market analysis and AI-driven financial content.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://finovian.com',
   ogImage: '/og-image.jpg',
   creator: 'Finovian Team',
@@ -19,7 +20,7 @@ export const siteConfig = {
     'AI trading',
     'portfolio management',
     'wealth building',
-    'financial planning'
+    'financial planning',
   ],
   authors: [
     {
@@ -62,9 +63,9 @@ export function generateMetadata({
 }: SEOProps = {}): Metadata {
   const pageTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
   const pageDescription = description;
-  const imageUrl = image 
-    ? typeof image === 'string' 
-      ? image 
+  const imageUrl = image
+    ? typeof image === 'string'
+      ? image
       : getImageUrl.hero(image)
     : `${siteConfig.url}${siteConfig.ogImage}`;
   const canonicalUrl = canonical ? `${siteConfig.url}${canonical}` : siteConfig.url;
@@ -238,4 +239,3 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
     })),
   };
 }
-

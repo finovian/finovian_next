@@ -32,12 +32,5 @@ module.exports = {
       },
     },
   ],
-};
-  useTabs: false,
-  bracketSpacing: true,
-  bracketSameLine: false,
-  arrowParens: 'always',
-  endOfLine: 'lf',
   plugins: ['prettier-plugin-tailwindcss'],
 };
-

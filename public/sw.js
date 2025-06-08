@@ -47,10 +47,7 @@ self.addEventListener('activate', (event) => {
         return Promise.all(
           cacheNames
             .filter((cacheName) => {
-              return (
-                cacheName !== STATIC_CACHE_NAME &&
-                cacheName !== DYNAMIC_CACHE_NAME
-              );
+              return cacheName !== STATIC_CACHE_NAME && cacheName !== DYNAMIC_CACHE_NAME;
             })
             .map((cacheName) => caches.delete(cacheName))
         );
@@ -90,7 +87,7 @@ async function handleFetch(request) {
 
   // Determine cache strategy
   let strategy = STALE_WHILE_REVALIDATE; // default
-  
+
   for (const [route, routeStrategy] of Object.entries(CACHE_STRATEGIES)) {
     if (pathname.startsWith(route)) {
       strategy = routeStrategy;
@@ -127,11 +124,11 @@ async function executeStrategy(request, strategy) {
 async function cacheFirst(request) {
   const cache = await caches.open(STATIC_CACHE_NAME);
   const cachedResponse = await cache.match(request);
-  
+
   if (cachedResponse) {
     return cachedResponse;
   }
-  
+
   try {
     const networkResponse = await fetch(request);
     if (networkResponse.ok) {
@@ -150,7 +147,7 @@ async function cacheFirst(request) {
 // Network first strategy
 async function networkFirst(request) {
   const cache = await caches.open(DYNAMIC_CACHE_NAME);
-  
+
   try {
     const networkResponse = await fetch(request);
     if (networkResponse.ok) {
@@ -170,7 +167,7 @@ async function networkFirst(request) {
 async function staleWhileRevalidate(request) {
   const cache = await caches.open(DYNAMIC_CACHE_NAME);
   const cachedResponse = await cache.match(request);
-  
+
   // Start fetch in background
   const fetchPromise = fetch(request)
     .then((networkResponse) => {
@@ -180,7 +177,7 @@ async function staleWhileRevalidate(request) {
       return networkResponse;
     })
     .catch(() => cachedResponse);
-  
+
   // Return cached response immediately if available
   return cachedResponse || fetchPromise;
 }
@@ -201,7 +198,7 @@ async function handleNewsletterSync() {
 // Push notification handling
 self.addEventListener('push', (event) => {
   if (!event.data) return;
-  
+
   const data = event.data.json();
   const options = {
     body: data.body,
@@ -221,20 +218,15 @@ self.addEventListener('push', (event) => {
       },
     ],
   };
-  
-  event.waitUntil(
-    self.registration.showNotification(data.title, options)
-  );
+
+  event.waitUntil(self.registration.showNotification(data.title, options));
 });
 
 // Handle notification clicks
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  
+
   if (event.action === 'view') {
-    event.waitUntil(
-      clients.openWindow('/')
-    );
+    event.waitUntil(clients.openWindow('/'));
   }
 });
-

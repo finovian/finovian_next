@@ -16,7 +16,7 @@ const SEO: React.FC<SEOProps> = ({
   description,
   structuredData,
   canonical,
-  _noIndex = false,
+  noIndex = false,
   preloadFonts = [],
 }) => {
   useEffect(() => {
@@ -47,6 +47,21 @@ const SEO: React.FC<SEOProps> = ({
       canonicalLink.setAttribute('href', canonical);
     }
 
+    // Handle noIndex meta tag
+    if (typeof document !== 'undefined') {
+      let robotsMeta = document.querySelector('meta[name="robots"]');
+      if (noIndex) {
+        if (!robotsMeta) {
+          robotsMeta = document.createElement('meta');
+          robotsMeta.setAttribute('name', 'robots');
+          document.head.appendChild(robotsMeta);
+        }
+        robotsMeta.setAttribute('content', 'noindex, nofollow');
+      } else if (robotsMeta) {
+        robotsMeta.remove();
+      }
+    }
+
     // Add structured data
     if (structuredData && typeof document !== 'undefined') {
       const script = document.createElement('script');
@@ -60,7 +75,7 @@ const SEO: React.FC<SEOProps> = ({
         }
       };
     }
-  }, [title, description, structuredData, canonical]);
+  }, [title, description, structuredData, canonical, noIndex]);
 
   useEffect(() => {
     // Preload critical fonts

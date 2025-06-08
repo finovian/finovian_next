@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import React from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 type Post = {
   _id: string;
@@ -27,25 +27,24 @@ type Props = {
 };
 
 const formatDate = (isoDate: string): string => {
-  return new Date(isoDate).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
+  return new Date(isoDate).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
   });
 };
 
 const ArticlesByCategory = ({ posts }: Props) => {
 
-  console.log('posts222', posts)
-
 
   if (!posts || posts.length === 0) {
     return (
-      <div className="bg-white text-[#1a1a1a] min-h-screen flex items-center justify-center px-4 py-12">
+      <div className="flex min-h-screen items-center justify-center bg-white px-4 py-12 text-[#1a1a1a]">
         <div className="text-center">
-          <h1 className="text-3xl font-semibold mb-4">No Articles Found</h1>
-          <p className="text-neutral-600 text-lg">
-            There are currently no articles in this category. Please check back later or explore other categories.
+          <h1 className="mb-4 text-3xl font-semibold">No Articles Found</h1>
+          <p className="text-lg text-neutral-600">
+            There are currently no articles in this category. Please check back later or explore
+            other categories.
           </p>
         </div>
       </div>
@@ -54,25 +53,24 @@ const ArticlesByCategory = ({ posts }: Props) => {
 
   // Safely get categories from the first post
   const categories = posts[0]?.categories?.length
-    ? posts[0].categories.map((cat) => cat.title).join(", ")
-    : "Uncategorized";
+    ? posts[0].categories.map((cat) => cat.title).join(', ')
+    : 'Uncategorized';
 
   return (
-    <div className="bg-white text-[#1a1a1a] min-h-screen">
-      <div className="max-w-3xl mx-auto px-4 py-12">
+    <div className="min-h-screen bg-white text-[#1a1a1a]">
+      <div className="mx-auto max-w-3xl px-4 py-12">
         {/* Page Header */}
         <div className="mb-10">
-          <h1 className="text-4xl font-bold mb-2 tracking-tight">{categories}</h1>
-          <p className="text-neutral-600 text-lg leading-relaxed">
-            {posts[0].categories[0].description
-            }
+          <h1 className="mb-2 text-4xl font-bold tracking-tight">{categories}</h1>
+          <p className="text-lg leading-relaxed text-neutral-600">
+            {posts[0].categories[0].description}
           </p>
         </div>
 
         {/* Articles List */}
         <div className="space-y-10">
           {posts.map((post, index) => {
-            const categorySlug = post.categories?.[0]?.slug?.current || "uncategorized";
+            const categorySlug = post.categories?.[0]?.slug?.current || 'uncategorized';
             const articleSlug = post.slug.current;
             const fullSlug = `/${categorySlug}/${articleSlug}`;
             return (
@@ -84,17 +82,15 @@ const ArticlesByCategory = ({ posts }: Props) => {
                 className="group"
               >
                 <Link href={fullSlug} className="block space-y-2">
-                  <h2 className="text-2xl font-semibold group-hover:underline underline-offset-4 transition">
+                  <h2 className="text-2xl font-semibold underline-offset-4 transition group-hover:underline">
                     {post.title}
                   </h2>
-                  <p className="text-neutral-600 text-base leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                  <div className="text-sm text-neutral-400 mt-1">
+                  <p className="text-base leading-relaxed text-neutral-600">{post.excerpt}</p>
+                  <div className="mt-1 text-sm text-neutral-400">
                     {formatDate(post.publishedAt)} · {post.readingTime} min read
                   </div>
                 </Link>
-                <div className="border-b border-neutral-200 mt-6" />
+                <div className="mt-6 border-b border-neutral-200" />
               </motion.div>
             );
           })}

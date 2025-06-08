@@ -33,7 +33,7 @@ module.exports = {
         'cumulative-layout-shift': ['error', { maxNumericValue: 0.1 }],
         'total-blocking-time': ['error', { maxNumericValue: 600 }],
         'speed-index': ['error', { maxNumericValue: 5000 }],
-        
+
         // Other categories same as desktop
         'categories:accessibility': ['error', { minScore: 0.95 }],
         'categories:best-practices': ['error', { minScore: 0.95 }],
@@ -46,4 +46,3 @@ module.exports = {
     },
   },
 };
-

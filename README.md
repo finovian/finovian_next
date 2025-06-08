@@ -1,6 +1,8 @@
 # Finovian - Financial News & Analysis Platform
 
-A modern, **100% optimized** financial news and analysis platform built with Next.js 15,  TypeScript, and Sanity CMS. Achieving perfect Lighthouse scores across all metrics.
+A modern, **100% optimized** financial news and analysis platform built with
+Next.js 15, TypeScript, and Sanity CMS. Achieving perfect Lighthouse scores
+across all metrics.
 
 [![Lighthouse Performance](https://img.shields.io/badge/Lighthouse-Performance%2095%25-brightgreen)](https://web.dev/performance-scoring/)
 [![Lighthouse SEO](https://img.shields.io/badge/Lighthouse-SEO%2095%25-brightgreen)](https://web.dev/lighthouse-seo/)
@@ -11,14 +13,16 @@ A modern, **100% optimized** financial news and analysis platform built with Nex
 ## 🎯 Optimization Achievements
 
 ### 🏆 Perfect Scores
+
 - **Desktop Performance**: 95%+ ✅
-- **Mobile Performance**: 85%+ ✅  
+- **Mobile Performance**: 85%+ ✅
 - **SEO Optimization**: 95%+ ✅
 - **Accessibility (WCAG 2.1 AA)**: 95%+ ✅
 - **Best Practices**: 95%+ ✅
 - **PWA Ready**: 85%+ ✅
 
 ### ⚡ Core Web Vitals
+
 - **LCP (Largest Contentful Paint)**: < 2.5s ✅
 - **FID (First Input Delay)**: < 100ms ✅
 - **CLS (Cumulative Layout Shift)**: < 0.1 ✅
@@ -28,6 +32,7 @@ A modern, **100% optimized** financial news and analysis platform built with Nex
 ## 🚀 Features
 
 ### 📈 Performance & SEO
+
 - **Next.js 15** with App Router and Turbopack
 - **Advanced image optimization** with WebP/AVIF support
 - **Dynamic sitemap** and robots.txt generation
@@ -36,6 +41,7 @@ A modern, **100% optimized** financial news and analysis platform built with Nex
 - **Bundle optimization** and code splitting
 
 ### 🎨 User Experience
+
 - **Responsive design** with mobile-first approach
 - **Dark/Light mode** support
 - **Progressive Web App** (PWA) capabilities
@@ -44,6 +50,7 @@ A modern, **100% optimized** financial news and analysis platform built with Nex
 - **Smooth animations** with reduced motion support
 
 ### ♿ Accessibility
+
 - **WCAG 2.1 AA compliant**
 - **Keyboard navigation** support
 - **Screen reader** optimized
@@ -54,6 +61,7 @@ A modern, **100% optimized** financial news and analysis platform built with Nex
 ## 🛠️ Tech Stack
 
 ### Core Technologies
+
 - **Framework**: Next.js 15 (App Router, Turbopack)
 - **Language**: TypeScript (Strict mode)
 - **Styling**: Tailwind CSS v4
@@ -62,6 +70,7 @@ A modern, **100% optimized** financial news and analysis platform built with Nex
 - **Data Fetching**: TanStack Query + SWR
 
 ### Performance & Optimization
+
 - **Image Optimization**: Next.js Image component
 - **Font Optimization**: Next.js Font optimization
 - **Bundle Analysis**: Webpack Bundle Analyzer
@@ -71,13 +80,15 @@ A modern, **100% optimized** financial news and analysis platform built with Nex
 ## 📦 Quick Start
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - npm or yarn
 - Git
 
 ### Installation
 
 1. **Clone and setup**:
+
    ```bash
    git clone https://github.com/yourusername/finovian.git
    cd finovian
@@ -85,12 +96,14 @@ A modern, **100% optimized** financial news and analysis platform built with Nex
    ```
 
 2. **Environment configuration**:
+
    ```bash
    cp .env.example .env.local
    # Edit .env.local with your configuration
    ```
 
 3. **Development server**:
+
    ```bash
    npm run dev
    ```
@@ -103,6 +116,7 @@ A modern, **100% optimized** financial news and analysis platform built with Nex
 ## 🚦 Available Scripts
 
 ### Development
+
 ```bash
 npm run dev              # Start development server (Turbopack)
 npm run build            # Build for production
@@ -110,6 +124,7 @@ npm run start            # Start production server
 ```
 
 ### Code Quality
+
 ```bash
 npm run lint             # Run ESLint
 npm run lint:fix         # Fix ESLint errors
@@ -119,6 +134,7 @@ npm run format:check     # Check code formatting
 ```
 
 ### Performance & Testing
+
 ```bash
 npm run test:lighthouse  # Run Lighthouse tests (desktop)
 npm run test:lighthouse:mobile  # Run Lighthouse tests (mobile)
@@ -130,12 +146,14 @@ npm run analyze          # Bundle size analysis
 ## 📊 Performance Monitoring
 
 ### Lighthouse CI Integration
+
 Automated performance testing on every commit:
+
 ```bash
 # Desktop performance testing
 npm run test:lighthouse
 
-# Mobile performance testing  
+# Mobile performance testing
 npm run test:lighthouse:mobile
 
 # Complete optimization validation
@@ -145,6 +163,7 @@ npm run optimize
 ## 🎯 SEO Features
 
 ### Technical SEO
+
 - ✅ Dynamic XML sitemaps (`/sitemap.xml`)
 - ✅ Robots.txt configuration (`/robots.txt`)
 - ✅ Canonical URLs
@@ -153,6 +172,7 @@ npm run optimize
 - ✅ JSON-LD structured data
 
 ### Content SEO
+
 - ✅ Semantic HTML structure
 - ✅ Optimized heading hierarchy
 - ✅ Image alt text automation
@@ -171,6 +191,7 @@ npm run optimize
 ## 📈 Analytics & Monitoring
 
 ### Integrated Analytics
+
 - **Google Analytics 4** with enhanced ecommerce
 - **Core Web Vitals** real user monitoring
 - **Custom event tracking** for user interactions
@@ -179,10 +200,13 @@ npm run optimize
 
 ## 📚 Documentation
 
-- **[Optimization Guide](./OPTIMIZATION.md)** - Complete optimization documentation
-- **[Performance Checklist](./docs/performance.md)** - Performance optimization checklist
+- **[Optimization Guide](./OPTIMIZATION.md)** - Complete optimization
+  documentation
+- **[Performance Checklist](./docs/performance.md)** - Performance optimization
+  checklist
 - **[SEO Guide](./docs/seo.md)** - SEO implementation details
-- **[Accessibility Guide](./docs/accessibility.md)** - WCAG compliance documentation
+- **[Accessibility Guide](./docs/accessibility.md)** - WCAG compliance
+  documentation
 - **[PWA Guide](./docs/pwa.md)** - Progressive Web App features
 
 ## 🤝 Contributing
@@ -194,6 +218,7 @@ npm run optimize
 5. Open a Pull Request
 
 ### Development Guidelines
+
 - Follow the existing code style
 - Add tests for new features
 - Ensure Lighthouse scores remain high
@@ -202,7 +227,8 @@ npm run optimize
 
 ## 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE)
+file for details.
 
 ---
 
@@ -210,4 +236,5 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-**Performance First • SEO Optimized • Accessibility Focused • 100% Lighthouse Score**
+**Performance First • SEO Optimized • Accessibility Focused • 100% Lighthouse
+Score**

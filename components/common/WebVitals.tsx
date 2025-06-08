@@ -37,7 +37,10 @@ function sendToAnalytics(metric: { name: string; value: number; id: string }) {
 export default function WebVitals() {
   useEffect(() => {
     // Only run in production or when explicitly enabled
-    if (process.env.NODE_ENV === 'production' || process.env.NEXT_PUBLIC_WEB_VITALS_ENABLED === 'true') {
+    if (
+      process.env.NODE_ENV === 'production' ||
+      process.env.NEXT_PUBLIC_WEB_VITALS_ENABLED === 'true'
+    ) {
       onCLS(sendToAnalytics);
       onINP(sendToAnalytics);
       onFCP(sendToAnalytics);
@@ -48,4 +51,3 @@ export default function WebVitals() {
 
   return null; // This component doesn't render anything
 }
-

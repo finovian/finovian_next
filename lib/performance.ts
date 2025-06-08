@@ -16,64 +16,64 @@ export const trackWebVitals = (onPerfEntry?: (metric: Metric) => void) => {
 // Resource loading optimization
 export const preloadResource = (href: string, as: string, type?: string, crossOrigin?: string) => {
   if (typeof document === 'undefined') return;
-  
+
   const link = document.createElement('link');
   link.rel = 'preload';
   link.href = href;
   link.as = as;
-  
+
   if (type) link.type = type;
   if (crossOrigin) link.crossOrigin = crossOrigin;
-  
+
   document.head.appendChild(link);
 };
 
 // Prefetch resources
 export const prefetchResource = (href: string) => {
   if (typeof document === 'undefined') return;
-  
+
   const link = document.createElement('link');
   link.rel = 'prefetch';
   link.href = href;
-  
+
   document.head.appendChild(link);
 };
 
 // DNS prefetch
 export const dnsPrefetch = (hostname: string) => {
   if (typeof document === 'undefined') return;
-  
+
   const link = document.createElement('link');
   link.rel = 'dns-prefetch';
   link.href = hostname;
-  
+
   document.head.appendChild(link);
 };
 
 // Preconnect to external domains
 export const preconnect = (href: string, crossOrigin?: boolean) => {
   if (typeof document === 'undefined') return;
-  
+
   const link = document.createElement('link');
   link.rel = 'preconnect';
   link.href = href;
-  
+
   if (crossOrigin) link.crossOrigin = 'anonymous';
-  
+
   document.head.appendChild(link);
 };
 
 // Image loading optimization
 export const optimizeImageLoading = () => {
   if (typeof window === 'undefined') return;
-  
+
   // Use Intersection Observer for lazy loading images
   const imageObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const img = entry.target as HTMLImageElement;
         const src = img.dataset.src;
-        
+
         if (src) {
           img.src = src;
           img.removeAttribute('data-src');
@@ -82,7 +82,7 @@ export const optimizeImageLoading = () => {
       }
     });
   });
-  
+
   // Observe all images with data-src attribute
   document.querySelectorAll('img[data-src]').forEach((img) => {
     imageObserver.observe(img);
@@ -92,17 +92,17 @@ export const optimizeImageLoading = () => {
 // Critical CSS inlining helper
 export const inlineCriticalCSS = (css: string) => {
   if (typeof document === 'undefined') return;
-  
+
   const style = document.createElement('style');
   style.textContent = css;
   style.setAttribute('data-critical', 'true');
-  
+
   document.head.appendChild(style);
 };
 
 // Service Worker registration
 export const registerServiceWorker = async (swPath: string = '/sw.js') => {
-  if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+  if ('serviceWorker' in navigator) {
     try {
       const registration = await navigator.serviceWorker.register(swPath);
       if (process.env.NODE_ENV === 'development') {
@@ -121,9 +121,7 @@ export const registerServiceWorker = async (swPath: string = '/sw.js') => {
 export const analyzeBundle = () => {
   if (process.env.NODE_ENV === 'development') {
     // Bundle analyzer would be used in webpack config, not imported dynamically
-    if (process.env.NODE_ENV === 'development') {
-      console.log('Bundle analyzer would be available in webpack config');
-    }
+    console.log('Bundle analyzer would be available in webpack config');
   }
 };
 
@@ -159,12 +157,12 @@ export const performanceMeasure = (name: string, startMark: string, endMark?: st
 export const addCriticalResourceHints = () => {
   // Preload critical fonts
   preloadResource('/fonts/Newsreader_9pt-Regular.ttf', 'font', 'font/ttf', 'anonymous');
-  
+
   // Preconnect to external services
   preconnect('https://fonts.googleapis.com');
   preconnect('https://fonts.gstatic.com', true);
   preconnect('https://cdn.sanity.io');
-  
+
   // DNS prefetch for analytics
   dnsPrefetch('https://www.google-analytics.com');
   dnsPrefetch('https://www.googletagmanager.com');
@@ -173,8 +171,12 @@ export const addCriticalResourceHints = () => {
 // Memory usage monitoring
 export const monitorMemoryUsage = () => {
   if (typeof window !== 'undefined' && 'memory' in performance) {
-    const memInfo = (performance as { memory: { usedJSHeapSize: number; totalJSHeapSize: number; jsHeapSizeLimit: number } }).memory;
-    
+    const memInfo = (
+      performance as {
+        memory: { usedJSHeapSize: number; totalJSHeapSize: number; jsHeapSizeLimit: number };
+      }
+    ).memory;
+
     if (process.env.NODE_ENV === 'development') {
       console.log({
         usedJSHeapSize: memInfo.usedJSHeapSize,
@@ -182,17 +184,17 @@ export const monitorMemoryUsage = () => {
         jsHeapSizeLimit: memInfo.jsHeapSizeLimit,
       });
     }
+  }
 };
 
 // Critical path optimization
 export const optimizeCriticalPath = () => {
   // Add critical resource hints
   addCriticalResourceHints();
-  
+
   // Optimize image loading
   optimizeImageLoading();
-  
+
   // Register service worker
   registerServiceWorker();
 };
-
