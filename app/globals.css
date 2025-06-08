@@ -41,9 +41,24 @@ body {
 
 @media (max-width: 786px) {
   .custom-padding {
-    padding-left: 12rem
-      /* 60 */
-    ;
+    padding-left: 12rem /* 60 */;
     padding-right: 12rem;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.3s ease-out both;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

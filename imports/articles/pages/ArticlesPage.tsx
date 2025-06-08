@@ -93,7 +93,7 @@ const ArticlesPage = ({ post, readMoreArticles }: Props) => {
 
       {readMoreArticles && readMoreArticles.length > 0 && (
         <section className="mt-16 p-6 border-t border-gray-300">
-          <h2 className="text-2xl font-semibold mb-4 text-blue-700">
+          <h2 className="text-2xl font-semibold mb-4 text-black">
             Read More
           </h2>
           <ul className="list-disc list-inside space-y-2">
@@ -104,7 +104,7 @@ const ArticlesPage = ({ post, readMoreArticles }: Props) => {
                     ? article.categories?.[0]?.slug?.current
                     : `/${article.categories?.[0]?.slug?.current || "general"}`
                   )}/${article.slug.current}`}
-                  className="text-blue-600 hover:underline"
+                  className="text-black hover:underline"
                 >
                   {article.title}
                 </a>
