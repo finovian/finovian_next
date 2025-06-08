@@ -20,9 +20,9 @@ export async function POST(req: Request) {
       { message: "Subscribed successfully", result },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json(
-      { error: "Something went wrong", details: error.message },
+      { error: "Something went wrong", details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }

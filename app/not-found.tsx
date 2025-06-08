@@ -12,7 +12,7 @@ const NotFound = () => {
       </p>
       <div className="flex justify-center">
         <div className="flex flex-1 gap-3 max-w-[480px] flex-col items-stretch px-4 py-3">
-          <Link href={"/"}>
+          <Link href="/">
             <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#ededed] text-[#141414] text-sm font-bold leading-normal tracking-[0.015em] w-full">
               <span className="truncate">→ Go back home</span>
             </button>
@@ -20,7 +20,7 @@ const NotFound = () => {
           <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#ededed] text-[#141414] text-sm font-bold leading-normal tracking-[0.015em] w-full">
             <span className="truncate">→ Browse articles</span>
           </button>
-          <Link href={"/contact"}>
+          <Link href="/contact">
             <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#ededed] text-[#141414] text-sm font-bold leading-normal tracking-[0.015em] w-full">
               <span className="truncate">→ Contact me</span>
             </button>

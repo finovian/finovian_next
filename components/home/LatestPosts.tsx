@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import type { Image } from "@sanity/types";
 import { getImageUrl } from "@/lib/sanity";
 
 type PostCardProps = {

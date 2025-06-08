@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
-body {
-  font-family: "Newsreader";
-}
-
+/* Optimize font loading with swap display */
 @font-face {
   font-family: "Newsreader";
   src: url("/fonts/Newsreader_9pt-Regular.ttf") format("truetype");
-  font-weight: normal;
+  font-weight: 400;
   font-style: normal;
+  font-display: swap;
+  font-feature-settings: "kern" 1, "liga" 1;
 }
 
 @font-face {
@@ -16,20 +15,8 @@ body {
   src: url("/fonts/Newsreader_9pt-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
-}
-
-@font-face {
-  font-family: "Newsreader";
-  src: url("/fonts/Newsreader_9pt-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Newsreader";
-  src: url("/fonts/Newsreader_9pt-SemiBold.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "kern" 1, "liga" 1;
 }
 
 @font-face {
@@ -37,6 +24,35 @@ body {
   src: url("/fonts/Newsreader_9pt-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/Newsreader_9pt-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/Newsreader_9pt-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+body {
+  font-family: "Newsreader", sans-serif;
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 @media (max-width: 786px) {

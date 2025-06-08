@@ -2,7 +2,6 @@
 import React from "react";
 import styles from "../../styles/backgrounds.module.css";
 import Link from "next/link";
-import type { Image } from "@sanity/types";
 import { getImageUrl } from "@/lib/sanity";
 
 type Post = {
@@ -37,7 +36,7 @@ const FeaturedArticle = ({ posts }: FeaturedArticleProps) => {
           className="flex flex-col md:flex-row gap-4 bg-white rounded-lg overflow-hidden mb-6"
         >
           <div
-            className={`w-full md:w-1/2 bg-center bg-no-repeat aspect-video bg-cover rounded md:rounded-none`}
+            className="w-full md:w-1/2 bg-center bg-no-repeat aspect-video bg-cover rounded md:rounded-none"
             style={{
               backgroundImage: item.mainImage
                 ? `url(${getImageUrl.hero(item.mainImage)})`

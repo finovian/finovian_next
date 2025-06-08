@@ -30,7 +30,10 @@ export default function FinancialNavbar({ categories }: Props) {
   const handleSearch = () => {
     setSearchOpen(false);
     if (!query.trim()) return;
-    console.log("Search query:", query);
+    // Handle search query
+    if (process.env.NODE_ENV === 'development') {
+      console.log("Search query:", query);
+    }
     setQuery("");
   };
 
@@ -285,7 +288,7 @@ export default function FinancialNavbar({ categories }: Props) {
                       setStatus('idle');
                     }, 2000);
                   }
-                } catch (err) {
+                } catch (_err) {
                   setStatus('error');
                   setErrorMsg('Network error. Please try again.');
                 }
