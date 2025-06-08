@@ -18,6 +18,7 @@ type Post = {
       current: string;
     };
     title: string;
+    description: string;
   }[];
 };
 
@@ -34,29 +35,46 @@ const formatDate = (isoDate: string): string => {
 };
 
 const ArticlesByCategory = ({ posts }: Props) => {
+
+  console.log('posts222', posts)
+
+
+  if (!posts || posts.length === 0) {
+    return (
+      <div className="bg-white text-[#1a1a1a] min-h-screen flex items-center justify-center px-4 py-12">
+        <div className="text-center">
+          <h1 className="text-3xl font-semibold mb-4">No Articles Found</h1>
+          <p className="text-neutral-600 text-lg">
+            There are currently no articles in this category. Please check back later or explore other categories.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // Safely get categories from the first post
+  const categories = posts[0]?.categories?.length
+    ? posts[0].categories.map((cat) => cat.title).join(", ")
+    : "Uncategorized";
+
   return (
     <div className="bg-white text-[#1a1a1a] min-h-screen">
       <div className="max-w-3xl mx-auto px-4 py-12">
         {/* Page Header */}
         <div className="mb-10">
-          <h1 className="text-4xl font-bold mb-2 tracking-tight">
-            {posts[0].categories
-              .map((cat: { title: string }) => cat.title)
-              .join(", ")}
-          </h1>
+          <h1 className="text-4xl font-bold mb-2 tracking-tight">{categories}</h1>
           <p className="text-neutral-600 text-lg leading-relaxed">
-            Insights, strategies, and timeless principles on long-term investing
-            and wealth building.
+            {posts[0].categories[0].description
+            }
           </p>
         </div>
 
         {/* Articles List */}
         <div className="space-y-10">
           {posts.map((post, index) => {
-            const categorySlug =
-              post.categories[0]?.slug.current || "uncategorized";
+            const categorySlug = post.categories?.[0]?.slug?.current || "uncategorized";
             const articleSlug = post.slug.current;
-            const fullSlug = `/category${categorySlug}/${articleSlug}`;
+            const fullSlug = `/${categorySlug}/${articleSlug}`;
             return (
               <motion.div
                 key={post._id}

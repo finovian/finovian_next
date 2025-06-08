@@ -2,12 +2,20 @@ import { PortableText, PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
 import React from "react";
 import type { PortableTextBlock } from "@portabletext/types";
+import { getImageUrl } from "@/lib/sanity";
 
 type Category = { title: string };
 type Author = { name?: string };
 type ArticlePreview = {
   title: string;
-  slug: string;
+  slug: {
+    current: string;
+  };
+  categories?: {
+    slug?: {
+      current?: string;
+    };
+  }[];
 };
 
 type Post = {
@@ -15,7 +23,8 @@ type Post = {
   publishedAt: string;
   mainImage?: {
     asset?: {
-      url?: string;
+      _ref: string;
+      _type: string;
     };
     alt?: string;
   };
@@ -26,20 +35,16 @@ type Post = {
 
 type Props = {
   post: Post;
-  nextArticle?: ArticlePreview; // For "Next Article" teaser
-  readMoreArticles?: ArticlePreview[]; // For read more links
+  readMoreArticles?: ArticlePreview[];
 };
 
-const ArticlesPage = ({ post, nextArticle, readMoreArticles }: Props) => {
+const ArticlesPage = ({ post, readMoreArticles }: Props) => {
   const components: PortableTextComponents = {
     types: {
       image: ({ value }) => {
-        const imageUrl = value?.asset?._ref
-          ? `https://cdn.sanity.io/images/ju8y98v2/production/${value.asset._ref
-              .split("-")
-              .slice(1)
-              .join(".")}`
-          : "";
+        if (!value?.asset) return null;
+
+        const imageUrl = getImageUrl.hero(value);
 
         return (
           <div className="my-4">
@@ -63,9 +68,9 @@ const ArticlesPage = ({ post, nextArticle, readMoreArticles }: Props) => {
         {new Date(post.publishedAt).toDateString()}
       </p>
 
-      {post.mainImage?.asset?.url && (
+      {post.mainImage && (
         <Image
-          src={post.mainImage.asset.url}
+          src={getImageUrl.hero(post.mainImage)}
           alt={post.mainImage.alt || "Post image"}
           width={800}
           height={450}
@@ -86,22 +91,6 @@ const ArticlesPage = ({ post, nextArticle, readMoreArticles }: Props) => {
         )}
       </div>
 
-      {/* NEXT ARTICLE teaser */}
-      {nextArticle && (
-        <section className="mt-16 p-6 border-t border-gray-300">
-          <h2 className="text-2xl font-semibold mb-4 text-blue-700">
-            Next Article
-          </h2>
-          <a
-            href={`/articles/${nextArticle.slug}`}
-            className="text-xl text-blue-600 hover:underline"
-          >
-            {nextArticle.title}
-          </a>
-        </section>
-      )}
-
-      {/* READ MORE section */}
       {readMoreArticles && readMoreArticles.length > 0 && (
         <section className="mt-16 p-6 border-t border-gray-300">
           <h2 className="text-2xl font-semibold mb-4 text-blue-700">
@@ -109,9 +98,12 @@ const ArticlesPage = ({ post, nextArticle, readMoreArticles }: Props) => {
           </h2>
           <ul className="list-disc list-inside space-y-2">
             {readMoreArticles.map((article) => (
-              <li key={article.slug}>
+              <li key={article.slug.current}>
                 <a
-                  href={`/articles/${article.slug}`}
+                  href={`${(article.categories?.[0]?.slug?.current?.startsWith("/")
+                    ? article.categories?.[0]?.slug?.current
+                    : `/${article.categories?.[0]?.slug?.current || "general"}`
+                  )}/${article.slug.current}`}
                   className="text-blue-600 hover:underline"
                 >
                   {article.title}

@@ -47,6 +47,15 @@ export const latestPostsQuery = `*[_type == "post"] | order(publishedAt desc)[0.
   }
 }`;
 
+export const latestPostsQueryinSort = `*[_type == "post"] | order(publishedAt desc)[0...5] {
+  _id,
+    categories[]->{
+    slug,
+  },
+  title,
+  slug,
+}`;
+
 export const featuredPostsQuery = `*[_type == "post" && featured == true] 
   | order(featuredPriority desc, publishedAt desc)[0...5] {
     _id,
@@ -75,24 +84,25 @@ export const allCategoriesQuery = `*[_type == "category"] | order(priority asc) 
   }`;
 
 export const postsByCategorySlugQuery = `
-  *[_type == "post" && $slug in categories[]->slug.current] | order(publishedAt desc) {
+*[_type == "post" && count((categories[]->slug.current)[@ == $slug]) > 0] | order(publishedAt desc) {
+  _id,
+  title,
+  slug,
+  mainImage,
+  seoDescription,
+  readingTime,
+  excerpt,
+  seoTitle,
+  tags,
+  publishedAt,
+  description,
+  categories[]->{
     _id,
     title,
     slug,
-    mainImage,
-    seoDescription,
-    readingTime,
-    excerpt,
-    seoTitle,
-    tags,
-    publishedAt,
-    description,
-    categories[]->{
-      _id,
-      title,
-      slug
-    }
+    description
   }
+}
 `;
 
 export const authorQuery = `*[_type == "author"][0]{

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import ArticlesPage from "@/imports/articles/pages/ArticlesPage";
-import { singlePostQuery } from "@/lib/queries";
-import { client } from "@/lib/sanity";
+import { latestPostsQueryinSort, singlePostQuery } from "@/lib/queries";
+import { client, getImageUrl } from "@/lib/sanity";
 
 type Props = {
   params: Promise<{
@@ -16,6 +16,13 @@ export default async function ArticlePage({ params }: Props) {
   const post = await client.fetch(singlePostQuery, {
     slug: resolvedParams.article,
   });
+
+  const latestPost = await client.fetch(latestPostsQueryinSort);
+
+  console.log('LatestPost', latestPost)
+
+
+
 
   const {
     title,
@@ -39,7 +46,7 @@ export default async function ArticlePage({ params }: Props) {
         <meta property="og:type" content="article" />
         <meta property="og:title" content={seoTitle || title} />
         <meta property="og:description" content={seoDescription || excerpt} />
-        <meta property="og:image" content={mainImage?.asset?.url} />
+        <meta property="og:image" content={mainImage ? getImageUrl.hero(mainImage) : ''} />
         <meta
           property="og:url"
           content={`https://finovian.com/category/${resolvedParams.categories}/${slug}`}
@@ -50,7 +57,7 @@ export default async function ArticlePage({ params }: Props) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoTitle || title} />
         <meta name="twitter:description" content={seoDescription || excerpt} />
-        <meta name="twitter:image" content={mainImage?.asset?.url} />
+        <meta name="twitter:image" content={mainImage ? getImageUrl.hero(mainImage) : ''} />
 
         {/* SEO Tags */}
         <meta name="keywords" content={tags?.join(", ")} />
@@ -69,7 +76,7 @@ export default async function ArticlePage({ params }: Props) {
               "@type": "Article",
               headline: seoTitle || title,
               description: seoDescription || excerpt,
-              image: [mainImage?.asset?.url],
+              image: mainImage ? [getImageUrl.hero(mainImage)] : [],
               author: {
                 "@type": "Person",
                 name: author?.name || "Finance Team",
@@ -94,14 +101,7 @@ export default async function ArticlePage({ params }: Props) {
 
       <ArticlesPage
         post={post}
-        nextArticle={{
-          title: "Next Big Stock Insight",
-          slug: "next-big-stock-insight",
-        }}
-        readMoreArticles={[
-          { title: "Investing Basics ", slug: "investing-basics" },
-          { title: "Financial Planning 101", slug: "financial-planning-101" },
-        ]}
+        readMoreArticles={latestPost}
       />
     </>
   );

@@ -19,7 +19,7 @@ export default function FinancialNavbar({ categories }: Props) {
 
   const NavLink = ({ href, label }: { href: string; label: string }) => (
     <Link
-      href={href}
+      href={href.startsWith("/") ? href : `/${href}`}
       className="text-[#1a202c] hover:text-[#0a2540] font-medium transition"
       onClick={() => setMenuOpen(false)}
     >
@@ -41,7 +41,7 @@ export default function FinancialNavbar({ categories }: Props) {
           {categories.map((cat) => (
             <NavLink
               key={cat._id}
-              href={`/category/${cat.slug.current}`}
+              href={cat.slug.current}
               label={cat.title}
             />
           ))}
@@ -66,7 +66,7 @@ export default function FinancialNavbar({ categories }: Props) {
           {categories.map((cat) => (
             <NavLink
               key={cat._id}
-              href={`/category/${cat.slug.current}`}
+              href={cat.slug.current}
               label={cat.title}
             />
           ))}

@@ -2,8 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import type { Image } from "@sanity/types";
-import { client } from "@/lib/sanity";
-import imageUrlBuilder from "@sanity/image-url";
+import { getImageUrl } from "@/lib/sanity";
 
 type PostCardProps = {
   category: string;
@@ -69,9 +68,6 @@ const PostCard = ({
 );
 
 const LatestPosts = ({ posts }: LatestPostsProps) => {
-  const builder = imageUrlBuilder(client);
-  const urlFor = (source: Image) => builder.image(source);
-
   return (
     <section className="px-4 py-6">
       <h2 className="text-[#141415] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">
@@ -87,11 +83,15 @@ const LatestPosts = ({ posts }: LatestPostsProps) => {
             excerpt={`Explore insights on ${item.title.toLowerCase()}, analyzing fundamentals, technicals, and expert outlook.`}
             imageUrl={
               item.mainImage
-                ? urlFor(item.mainImage).width(800).height(450).url()
+                ? getImageUrl.card(item.mainImage)
                 : undefined
             }
             ariaLabel={item.title}
-            link={`/posts/${item.slug?.current}`}
+            link={`${(item.categories?.[0]?.slug?.current?.startsWith("/")
+              ? item.categories?.[0]?.slug?.current
+              : `/${item.categories?.[0]?.slug?.current || "general"}`
+            )}/${item.slug.current}`}
+
           />
         ))}
       </div>

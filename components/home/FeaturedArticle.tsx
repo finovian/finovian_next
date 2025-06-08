@@ -2,9 +2,8 @@
 import React from "react";
 import styles from "../../styles/backgrounds.module.css";
 import Link from "next/link";
-import imageUrlBuilder from "@sanity/image-url";
 import type { Image } from "@sanity/types";
-import { client } from "@/lib/sanity";
+import { getImageUrl } from "@/lib/sanity";
 
 type Post = {
   _id: string;
@@ -26,9 +25,6 @@ type FeaturedArticleProps = {
 };
 
 const FeaturedArticle = ({ posts }: FeaturedArticleProps) => {
-  const builder = imageUrlBuilder(client);
-  const urlFor = (source: Image) => builder.image(source);
-
   return (
     <article className="px-4 pt-5 pb-6">
       <h2 className="text-[#141415] text-[22px] font-bold leading-tight tracking-[-0.015em] mb-4">
@@ -44,7 +40,7 @@ const FeaturedArticle = ({ posts }: FeaturedArticleProps) => {
             className={`w-full md:w-1/2 bg-center bg-no-repeat aspect-video bg-cover rounded md:rounded-none`}
             style={{
               backgroundImage: item.mainImage
-                ? `url(${urlFor(item?.mainImage).url()})`
+                ? `url(${getImageUrl.hero(item.mainImage)})`
                 : `${styles.featuredBackground}`,
             }}
             role="img"
@@ -68,14 +64,15 @@ const FeaturedArticle = ({ posts }: FeaturedArticleProps) => {
 
             <div>
               <Link
-                href={`/category/${
-                  item.categories?.[0]?.slug?.current || "general"
-                }/${item.slug.current}`}
+                href={`${(item.categories?.[0]?.slug?.current?.startsWith("/")
+                  ? item.categories?.[0]?.slug?.current
+                  : `/${item.categories?.[0]?.slug?.current || "general"}`
+                )}/${item.slug.current}`}
                 aria-label={`Read full article: ${item.title}`}
-                className="inline-flex items-center justify-center h-8 px-4 rounded bg-[#22262a] text-white text-sm font-medium leading-normal transition hover:bg-[#1b1f23]"
-              >
+                className="inline-flex items-center justify-center h-8 px-4 rounded bg-[#22262a] text-white text-sm font-medium leading-normal transition hover:bg-[#1b1f23]">
                 <span className="truncate">Read More</span>
               </Link>
+
             </div>
           </div>
         </div>

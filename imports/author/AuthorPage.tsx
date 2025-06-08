@@ -1,16 +1,38 @@
 import React from "react";
 import Image from "next/image";
 
-const AuthorPage = () => {
+type Post = {
+  _id: string;
+  title: string;
+  publishedAt: string;
+  slug: { current: string };
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+    };
+    alt?: string;
+  };
+  description?: string;
+  categories?: { title: string; slug: { current: string } }[];
+};
+
+type FeaturedArticleProps = {
+  posts: Post[];
+};
+
+const AuthorPage = ({ posts }: FeaturedArticleProps) => {
+
+  console.log('posts', posts)
   return (
     <main className="min-h-screen bg-white text-gray-900 px-4 sm:px-8 md:px-20 py-12">
       <section className="max-w-5xl mx-auto mb-16">
         <div className="flex justify-center py-6">
           <Image
-            src="/author.jpg"
+            src="/images/author.jpg"
             alt="Author profile"
-            width={120}
-            height={120}
+            width={220}
+            height={220}
             className="rounded-full object-cover border border-gray-200 shadow-sm"
           />
         </div>
@@ -50,26 +72,28 @@ const AuthorPage = () => {
       </section>
 
       <section className="max-w-5xl mx-auto">
-        <h2 className="text-2xl font-semibold mb-6 text-blue-700">
-          Articles by Alex
+        <h2 className="text-2xl font-semibold mb-6 text-black">
+          Articles by Jay
         </h2>
         <div className="grid gap-6 md:grid-cols-2">
-          {[1, 2, 3, 4].map((i) => (
+          {posts.map((i) => (
             <article
-              key={i}
+              key={i._id}
               className="border border-gray-200 p-5 rounded-xl shadow-sm hover:shadow-md transition"
             >
               <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                Example Stock Insight Title #{i}
+                {i.title}
               </h3>
               <p className="text-gray-600 text-sm mb-3">
-                A brief summary of the stock market topic or company analysis
-                discussed in this article...
+                {i.description}
               </p>
-              <p className="text-sm text-gray-500">Published: June {i}, 2025</p>
+              <p className="text-sm text-gray-500">        {new Date(i.publishedAt).toDateString()}</p>
               <a
-                href="#"
-                className="inline-block mt-3 text-blue-600 font-medium hover:underline"
+                href={`${(i.categories?.[0]?.slug?.current?.startsWith("/")
+                  ? i.categories?.[0]?.slug?.current
+                  : `/${i.categories?.[0]?.slug?.current || "general"}`
+                )}/${i.slug.current}`}
+                className="inline-block mt-3 text-black font-medium hover:underline"
               >
                 Read More
               </a>

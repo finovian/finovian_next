@@ -12,9 +12,12 @@ type Props = {
 export default async function CategoryPage({ params }: Props) {
   const resolvedParams = await params;
 
+
+
   const posts = await client.fetch(postsByCategorySlugQuery, {
-    slug: `/${resolvedParams.categories}`,
+    slug: `category/${resolvedParams.categories}`,
   });
+
 
   return <ArticlesByCategory posts={posts} />;
 }

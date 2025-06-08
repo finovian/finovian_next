@@ -1,4 +1,6 @@
 // lib/seoSchema.ts
+import { getImageUrl } from './sanity';
+import type { Image } from '@sanity/types';
 
 export function generateArticleSchema({
   title,
@@ -15,7 +17,7 @@ export function generateArticleSchema({
   seoTitle?: string;
   seoDescription?: string;
   excerpt?: string;
-  mainImage?: { asset?: { url?: string } };
+  mainImage?: Image;
   author?: { name?: string };
   publishedAt: string;
   slug: string;
@@ -26,7 +28,7 @@ export function generateArticleSchema({
     "@type": "Article",
     headline: seoTitle || title,
     description: seoDescription || excerpt,
-    image: [mainImage?.asset?.url],
+    image: mainImage ? [getImageUrl.hero(mainImage)] : [],
     author: {
       "@type": "Person",
       name: author?.name || "Finance Team",

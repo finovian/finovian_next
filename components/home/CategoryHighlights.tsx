@@ -78,7 +78,8 @@ const CategoryHighlights = ({ caetegories }: LatestPostsProps) => {
         {caetegories.map((cat) => (
           <Link
             key={cat.title}
-            href={`/category/${cat.slug.current}`}
+            href={cat.slug.current}
+
             className="rounded border border-[#e0e0e1] bg-white p-4 flex flex-col gap-3 hover:shadow transition"
             aria-label={cat.title}
           >
