@@ -24,40 +24,44 @@ export default function FinancialNavbar({ categories }: Props) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
-  const modalRef = useRef<HTMLDivElement>(null);
+  const loginRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLDivElement>(null);
 
   const handleSearch = () => {
-    setSearchOpen(false);
     if (!query.trim()) return;
-    // Handle search query
-
+    setSearchOpen(false);
     setQuery('');
   };
 
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      setLoginOpen(false);
-      setSearchOpen(false);
-    }
-  };
-
-  const handleClickOutside = (e: MouseEvent) => {
-    if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-      setLoginOpen(false);
-      setSearchOpen(false);
-    }
-  };
-
   useEffect(() => {
-    if (loginOpen || searchOpen) {
-      document.addEventListener('keydown', handleKeyDown);
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setLoginOpen(false);
+        setSearchOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as Node;
+
+      if (loginOpen && loginRef.current && !loginRef.current.contains(target)) {
+        setLoginOpen(false);
+      }
+
+      if (searchOpen && searchRef.current && !searchRef.current.contains(target)) {
+        setSearchOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [loginOpen, searchOpen]);
@@ -76,16 +80,13 @@ export default function FinancialNavbar({ categories }: Props) {
     <>
       <nav className="fixed top-0 z-50 w-full border-b border-gray-100 bg-white shadow-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 sm:px-10">
-          {/* Left: Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="text-2xl font-bold tracking-wide text-[#0a2540]">
               Finovian
             </Link>
           </div>
 
-          {/* Right: Navigation */}
           <div className="flex items-center space-x-6">
-            {/* Desktop Navigation */}
             <div
               className={clsx(
                 'hidden items-center gap-6 transition-all duration-300 lg:flex',
@@ -105,9 +106,8 @@ export default function FinancialNavbar({ categories }: Props) {
               </button>
             </div>
 
-            {/* Search & Mobile Menu */}
             <div className="flex items-center gap-3 lg:gap-4">
-              <div ref={modalRef} className="relative hidden lg:block">
+              <div ref={searchRef} className="relative hidden lg:block">
                 <button
                   type="button"
                   onClick={() => setSearchOpen(!searchOpen)}
@@ -130,6 +130,7 @@ export default function FinancialNavbar({ categories }: Props) {
                     onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                     className="flex-1 bg-transparent px-2 py-1 text-sm text-gray-800 focus:outline-none"
                     placeholder="Search..."
+                    onClick={(e) => e.stopPropagation()}
                   />
                   <button
                     onClick={handleSearch}
@@ -140,7 +141,6 @@ export default function FinancialNavbar({ categories }: Props) {
                 </div>
               </div>
 
-              {/* Mobile Toggle */}
               <div className="flex items-center gap-3 lg:hidden">
                 <button
                   type="button"
@@ -155,7 +155,6 @@ export default function FinancialNavbar({ categories }: Props) {
           </div>
         </div>
 
-        {/* Mobile Search */}
         {searchOpen && (
           <div className="px-6 pb-4 lg:hidden">
             <div className="flex items-center gap-2">
@@ -177,7 +176,6 @@ export default function FinancialNavbar({ categories }: Props) {
           </div>
         )}
 
-        {/* Mobile Navigation */}
         <div
           className={clsx(
             'overflow-hidden border-t border-gray-100 bg-white transition-all duration-300 lg:hidden',
@@ -203,11 +201,10 @@ export default function FinancialNavbar({ categories }: Props) {
         </div>
       </nav>
 
-      {/* Subscribe Modal */}
       {loginOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm">
           <div
-            ref={modalRef}
+            ref={loginRef}
             className="animate-fade-in-up relative mx-4 w-full max-w-sm rounded-xl bg-white p-6 shadow-xl"
           >
             <button
@@ -243,10 +240,11 @@ export default function FinancialNavbar({ categories }: Props) {
             )}
 
             <button
-              className={`w-full rounded-md py-2 text-sm font-medium transition ${status === 'loading'
-                ? 'cursor-not-allowed bg-gray-400 text-gray-700'
-                : 'bg-black text-white hover:bg-[#0a2540]'
-                }`}
+              className={`w-full rounded-md py-2 text-sm font-medium transition ${
+                status === 'loading'
+                  ? 'cursor-not-allowed bg-gray-400 text-gray-700'
+                  : 'bg-black text-white hover:bg-[#0a2540]'
+              }`}
               onClick={async () => {
                 if (!email || !email.includes('@')) {
                   setStatus('error');
@@ -271,7 +269,6 @@ export default function FinancialNavbar({ categories }: Props) {
                   } else {
                     setStatus('success');
                     setEmail('');
-                    // Optional: auto-close modal after success
                     setTimeout(() => {
                       setLoginOpen(false);
                       setStatus('idle');

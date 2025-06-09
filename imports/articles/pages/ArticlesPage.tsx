@@ -62,7 +62,7 @@ const ArticlesPage = ({ post, readMoreArticles }: Props) => {
   };
 
   return (
-    <main className="custom-padding mx-auto max-w-3xl px-4 py-10">
+    <main className="mx-auto px-6 py-10">
       <h1 className="mb-2 text-4xl font-bold">{post.title}</h1>
       <p className="mb-4 text-sm text-gray-500">{new Date(post.publishedAt).toDateString()}</p>
 
