@@ -12,7 +12,21 @@ const nextConfig: NextConfig = {
     ],
     webVitalsAttribution: ['CLS', 'LCP'],
     scrollRestoration: true,
+    // Disable font optimization temporarily to troubleshoot
+    optimizeFonts: false,
   },
+
+  // Font loading configuration
+  fontLoaders: [
+    {
+      loader: 'next/font/google',
+      options: {
+        subsets: ['latin'],
+        display: 'swap',
+        timeout: 30000, // 30 second timeout
+      },
+    },
+  ],
 
   // Image optimization
   images: {

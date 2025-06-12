@@ -20,6 +20,8 @@ const inter = Inter({
   display: 'swap',
   variable: '--font-inter',
   preload: true,
+  fallback: ['system-ui', 'arial'],
+  adjustFontFallback: false, // Disable if causing issues
 });
 
 const merriweather = Merriweather({
@@ -28,6 +30,8 @@ const merriweather = Merriweather({
   display: 'swap',
   variable: '--font-merriweather',
   preload: false,
+  fallback: ['Georgia', 'serif'],
+  adjustFontFallback: false, // Disable if causing issues
 });
 
 export default async function RootLayout({
@@ -50,14 +54,6 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Preload critical fonts */}
-        <link
-          rel="preload"
-          href="/_next/static/media/inter.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
 
         {/* JSON-LD Structured Data */}
         <script

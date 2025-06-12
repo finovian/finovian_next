@@ -108,13 +108,13 @@ export default function FinancialNavbar({ categories }: Props) {
 
             <div className="flex items-center gap-3 lg:gap-4">
               <div ref={searchRef} className="relative hidden lg:block">
-                <button
+                {/* <button
                   type="button"
                   onClick={() => setSearchOpen(!searchOpen)}
                   className="p-2 text-[#0a2540] transition hover:text-black"
                 >
                   <Search className="h-5 w-5" />
-                </button>
+                </button> */}
                 <div
                   className={clsx(
                     'absolute top-1/2 right-0 z-50 flex -translate-y-1/2 items-center gap-2 overflow-hidden rounded-md border border-gray-300 bg-gray-100 transition-all duration-300',
@@ -142,13 +142,6 @@ export default function FinancialNavbar({ categories }: Props) {
               </div>
 
               <div className="flex items-center gap-3 lg:hidden">
-                <button
-                  type="button"
-                  onClick={() => setSearchOpen((prev) => !prev)}
-                  className="p-2 text-[#0a2540] transition hover:text-black"
-                >
-                  <Search className="h-5 w-5" />
-                </button>
                 <Hamburger isOpen={menuOpen} toggle={() => setMenuOpen(!menuOpen)} />
               </div>
             </div>
