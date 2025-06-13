@@ -36,7 +36,7 @@ export async function withRetry<T>(
   options: RetryOptions = {}
 ): Promise<T> {
   const opts = { ...DEFAULT_RETRY_OPTIONS, ...options };
-  let lastError: Error;
+  let lastError: Error | undefined;
   
   for (let attempt = 0; attempt <= opts.maxRetries; attempt++) {
     try {
@@ -63,7 +63,8 @@ export async function withRetry<T>(
     }
   }
   
-  throw lastError!;
+  // This should never happen given the logic above, but provides a fallback
+  throw lastError || new Error('All retry attempts failed with unknown error');
 }
 
 /**

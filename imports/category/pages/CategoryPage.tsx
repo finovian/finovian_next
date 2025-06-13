@@ -84,7 +84,7 @@ const ArticlesByCategory = ({ posts }: Props) => {
                     {post.title}
                   </h2>
                   <p className="text-base leading-relaxed text-neutral-600">{post.excerpt}</p>
-                  <div className="mt-1 text-sm text-neutral-400">
+                  <div className="mt-1 text-sm text-neutral-600">
                     {formatDate(post.publishedAt)} · {post.readingTime} min read
                   </div>
                 </Link>

@@ -18,9 +18,13 @@ const HeroSection = () => {
               decisions.
             </h2>
           </div>
-          <button className="flex h-10 max-w-[480px] min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded bg-[#22262a] px-4 text-sm leading-normal font-bold tracking-[0.015em] text-white @[480px]:h-12 @[480px]:px-5 @[480px]:text-base @[480px]:leading-normal @[480px]:font-bold @[480px]:tracking-[0.015em]">
-            <Link href="/category/stocks">Start Reading</Link>
-          </button>
+          <Link 
+            href="/category/stocks"
+            className="flex h-10 max-w-[480px] min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded bg-[#22262a] px-4 text-sm leading-normal font-bold tracking-[0.015em] text-white @[480px]:h-12 @[480px]:px-5 @[480px]:text-base @[480px]:leading-normal @[480px]:font-bold @[480px]:tracking-[0.015em] transition hover:bg-[#1b1f23]"
+            aria-label="Start reading financial analysis and stock insights"
+          >
+            Start Reading
+          </Link>
         </div>
       </div>
     </div>

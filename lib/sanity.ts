@@ -3,15 +3,14 @@ import imageUrlBuilder from '@sanity/image-url';
 import type { Image } from '@sanity/types';
 
 const config = {
-  projectId: 'ju8y98v2',
-  dataset: 'production',
-  apiVersion: '2023-01-01',
+  projectId: process.env.NEXT_PROJECT_ID,
+  dataset: process.env.NEXT_DATASET,
+  apiVersion: process.env.NEXT_API_VERSION,
   useCdn: true,
   timeout: 30000,
   retryDelay: (attemptNumber: number) => Math.min(1000 * 2 ** attemptNumber, 16000),
   maxRetries: 3,
-  token:
-    'sklt137lz2H7GldZYEmz6L1nknK5bFiC632jgGhTyMEo4uAop9JuTx7vnHvqn2dKZXwPjsJQcOEPkyRCFiIyv9UFBvI7FRDek2yHc4sKjk3omHivD9r1killcg236Z59xN2LPLX47fK1Z6TeWHMS32vqJjKxqlenHOhHUrLDRpg1KPIBIOsw',
+  token: process.env.NEXT_SANITY_TOKEN,
 };
 
 export const client = createClient(config);
