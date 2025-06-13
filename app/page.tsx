@@ -14,10 +14,8 @@ export default async function Home() {
 
   return (
     <>
-      {/* Web Vitals monitoring */}
       <WebVitals />
 
-      {/* Page content */}
       <HeroSection />
       <FeaturedArticle posts={featuredPosts} />
       <LatestPosts posts={latestPosts} />

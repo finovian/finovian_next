@@ -35,8 +35,6 @@ const formatDate = (isoDate: string): string => {
 };
 
 const ArticlesByCategory = ({ posts }: Props) => {
-
-
   if (!posts || posts.length === 0) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-white px-4 py-12 text-[#1a1a1a]">

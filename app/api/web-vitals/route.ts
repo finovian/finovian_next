@@ -15,8 +15,6 @@ export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as WebVitalsMetric;
 
-    // Log web vitals data
-    // Log web vitals data for development
     if (process.env.NODE_ENV === 'development') {
       console.log('Web Vitals:', {
         metric: body.name,

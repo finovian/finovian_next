@@ -22,7 +22,6 @@ type FeaturedArticleProps = {
 };
 
 const AuthorPage = ({ posts }: FeaturedArticleProps) => {
-
   return (
     <main className="min-h-screen bg-white px-4 py-12 text-gray-900 sm:px-8 md:px-20">
       <section className="mx-auto mb-16 max-w-5xl">
@@ -80,10 +79,11 @@ const AuthorPage = ({ posts }: FeaturedArticleProps) => {
               <p className="mb-3 text-sm text-gray-600">{i.description}</p>
               <p className="text-sm text-gray-500"> {new Date(i.publishedAt).toDateString()}</p>
               <a
-                href={`${i.categories?.[0]?.slug?.current?.startsWith('/')
+                href={`${
+                  i.categories?.[0]?.slug?.current?.startsWith('/')
                     ? i.categories?.[0]?.slug?.current
                     : `/${i.categories?.[0]?.slug?.current || 'general'}`
-                  }/${i.slug.current}`}
+                }/${i.slug.current}`}
                 className="mt-3 inline-block font-medium text-black hover:underline"
               >
                 Read More

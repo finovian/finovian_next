@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import styles from '../../styles/backgrounds.module.css';
 import Link from 'next/link';

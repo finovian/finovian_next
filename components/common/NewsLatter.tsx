@@ -1,11 +1,59 @@
+'use client';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const NewsLatter = () => {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email || !email.includes('@')) {
+      setStatus('error');
+      setErrorMsg('Please enter a valid email address');
+      return;
+    }
+
+    setStatus('loading');
+    setErrorMsg('');
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setStatus('error');
+        setErrorMsg(data.error || 'Subscription failed');
+      } else {
+        setStatus('success');
+        setEmail('');
+        setTimeout(() => setStatus('idle'), 2500);
+      }
+    } catch {
+      setStatus('error');
+      setErrorMsg('Network error. Please try again.');
+    }
+  };
+
+  if (!hasMounted) return null;
+
   return (
     <div className="bg-[#0e1111] px-6 py-16 font-serif text-white md:px-12 lg:px-24">
       <div className="mx-auto w-full max-w-[960px]">
-        {/* CTA Section */}
         <div className="space-y-6 text-center md:space-y-8">
           <h1 className="text-[28px] leading-tight font-bold tracking-tight md:text-4xl md:leading-snug md:font-extrabold">
             Get smarter about investing — in your inbox.
@@ -13,56 +61,80 @@ const NewsLatter = () => {
           <p className="mx-auto max-w-[680px] text-sm text-gray-400 md:text-base">
             Join thousands of investors and receive concise, actionable insights each week.
           </p>
-          <form className="mx-auto flex max-w-[480px] flex-col items-center justify-center gap-4 sm:flex-row">
+
+          <form
+            onSubmit={handleSubmit}
+            className="mx-auto flex max-w-[480px] flex-col items-center justify-center gap-4 sm:flex-row"
+            aria-live="polite"
+          >
             <input
               type="email"
               placeholder="Enter your email"
-              className="h-12 w-full rounded-md bg-[#f2f2f3] px-4 text-sm text-black transition placeholder:text-[#737578] focus:ring-2 focus:ring-white focus:outline-none sm:h-14 sm:rounded-r-none sm:text-base"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={status === 'loading' || status === 'success'}
+              aria-invalid={status === 'error'}
               required
+              className="h-12 w-full rounded-md bg-[#f2f2f3] px-4 text-sm text-black transition placeholder:text-[#737578] focus:ring-2 focus:ring-white focus:outline-none sm:h-14 sm:rounded-r-none sm:text-base"
             />
+
             <button
               type="submit"
-              className="h-12 w-full rounded-md bg-[#e81a1a] px-6 text-sm font-semibold text-white transition hover:bg-[#d61616] sm:h-14 sm:w-auto sm:rounded-l-none sm:text-base"
+              disabled={status === 'loading' || status === 'success'}
+              className="h-12 w-full cursor-pointer rounded-md bg-[#e81a1a] px-6 text-sm font-semibold text-white transition hover:bg-[#d61616] sm:h-14 sm:w-auto sm:rounded-l-none sm:text-base"
             >
-              Subscribe
+              {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
             </button>
           </form>
+
+          <AnimatePresence>
+            {status === 'error' && (
+              <motion.p
+                key="error"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="text-sm text-red-500"
+              >
+                {errorMsg || 'Something went wrong.'}
+              </motion.p>
+            )}
+
+            {status === 'success' && (
+              <motion.p
+                key="success"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="text-sm text-green-500"
+              >
+                🎉 Thank you for subscribing!
+              </motion.p>
+            )}
+          </AnimatePresence>
         </div>
 
-        {/* Divider */}
         <hr className="my-12 border-[#2a2a2a]" />
 
         {/* Trusted Logos */}
         <div className="mb-4 text-center text-sm text-gray-400">Trusted by readers from:</div>
         <div className="flex flex-wrap items-center justify-center gap-8">
-          <Image
-            src="/NewYorkTimes.svg"
-            alt="New York Times"
-            width={100}
-            height={24}
-            className="h-6 opacity-80 transition hover:opacity-100"
-          />
-          <Image
-            src="/WallStreetJournal.svg"
-            alt="Wall Street Journal"
-            width={100}
-            height={24}
-            className="h-6 opacity-80 transition hover:opacity-100"
-          />
-          <Image
-            src="/NewYorkTimes.svg"
-            alt="The Economist"
-            width={100}
-            height={24}
-            className="h-6 opacity-80 transition hover:opacity-100"
-          />
-          <Image
-            src="/NewYorkTimes.svg"
-            alt="Financial Times"
-            width={100}
-            height={24}
-            className="h-6 opacity-80 transition hover:opacity-100"
-          />
+          {[
+            { src: '/NewYorkTimes.svg', alt: 'New York Times' },
+            { src: '/WallStreetJournal.svg', alt: 'Wall Street Journal' },
+            { src: '/WallStreetJournal.svg', alt: 'The Economist' },
+            { src: '/NewYorkTimes.svg', alt: 'Financial Times' },
+          ].map((logo, index) => (
+            <Image
+              key={index}
+              src={logo.src}
+              alt={logo.alt}
+              width={100}
+              height={24}
+              className="h-6 opacity-80 transition hover:opacity-100"
+              priority={index === 0}
+            />
+          ))}
         </div>
       </div>
     </div>
