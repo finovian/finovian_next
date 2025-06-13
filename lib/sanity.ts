@@ -6,13 +6,9 @@ const config = {
   projectId: 'ju8y98v2',
   dataset: 'production',
   apiVersion: '2023-01-01',
-  useCdn: true, // Enable CDN for better performance
-  timeout: 30000, // 30 seconds timeout
-  retryDelay: {
-    initial: 1000,
-    max: 16000,
-    multiplier: 2,
-  },
+  useCdn: true,
+  timeout: 30000,
+  retryDelay: (attemptNumber: number) => Math.min(1000 * 2 ** attemptNumber, 16000),
   maxRetries: 3,
   token:
     'sklt137lz2H7GldZYEmz6L1nknK5bFiC632jgGhTyMEo4uAop9JuTx7vnHvqn2dKZXwPjsJQcOEPkyRCFiIyv9UFBvI7FRDek2yHc4sKjk3omHivD9r1killcg236Z59xN2LPLX47fK1Z6TeWHMS32vqJjKxqlenHOhHUrLDRpg1KPIBIOsw',
@@ -20,13 +16,10 @@ const config = {
 
 export const client = createClient(config);
 
-// Create image URL builder
 const builder = imageUrlBuilder(client);
 
-// Helper function to generate image URLs
 export const urlFor = (source: Image) => builder.image(source);
 
-// Common image URL generators with proper dimensions
 export const getImageUrl = {
   // For hero/featured images
   hero: (source: Image) => urlFor(source).width(1200).height(675).quality(90).format('webp').url(),

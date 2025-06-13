@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
-import { Search, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
 type Category = {
   _id: string;

@@ -1,5 +1,4 @@
 import { client } from './sanity';
-import { withRetry, withFallback, isNetworkError } from './network-recovery';
 
 export const singlePostQuery = `
   *[_type == "post" && slug.current == $slug][0]{
