@@ -6,6 +6,7 @@ import Footer from '@/components/common/Footer';
 import FinancialNavbar from '@/components/common/Navbar';
 import NewsLatter from '@/components/common/NewsLatter';
 import ErrorBoundary from '@/components/common/ErrorBoundary';
+import PlausibleInitializer from '@/components/common/PlausibleInitializer';
 import { getAllCategories } from '@/lib/queries';
 import { generateMetadata, generateWebsiteSchema, generateOrganizationSchema } from '@/lib/seo';
 
@@ -54,13 +55,6 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
-
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://cdn.sanity.io" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -69,6 +63,12 @@ export default async function RootLayout({
         {/* DNS prefetch for performance */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
 
       <body className="font-sans antialiased" suppressHydrationWarning>
@@ -82,6 +82,7 @@ export default async function RootLayout({
 
         <ErrorBoundary>
           <Providers>
+            <PlausibleInitializer />
             <div className="group/design-root relative flex size-full min-h-screen flex-col overflow-x-hidden bg-white">
               <div className="layout-container flex h-full grow flex-col">
                 <FinancialNavbar categories={categories} />
