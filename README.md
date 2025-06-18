@@ -10,7 +10,7 @@ across all metrics.
 [![Lighthouse Best Practices](https://img.shields.io/badge/Lighthouse-Best%20Practices%2095%25-brightgreen)](https://web.dev/lighthouse-best-practices/)
 [![PWA](https://img.shields.io/badge/PWA-Ready-blue)](https://web.dev/progressive-web-apps/)
 
-## 🎯 Optimization Achievements
+## 🎯 Optimization Achievements 
 
 ### 🏆 Perfect Scores
 
