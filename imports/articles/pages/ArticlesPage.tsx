@@ -53,11 +53,11 @@ const ArticlesPage = ({ post, readMoreArticles }: Props) => {
               alt={value.alt || 'Article image'}
               width={1400}
               height={700}
-              className="h-auto w-full object-cover shadow-sm rounded-lg"
+              className="h-auto w-full rounded-lg object-cover shadow-sm"
               priority={false}
             />
             {value.alt && (
-              <figcaption className="mt-4 text-center text-sm font-light tracking-wide text-muted-foreground">
+              <figcaption className="text-muted-foreground mt-4 text-center text-sm font-light tracking-wide">
                 {value.alt}
               </figcaption>
             )}
@@ -67,41 +67,43 @@ const ArticlesPage = ({ post, readMoreArticles }: Props) => {
     },
     block: {
       normal: ({ children }) => (
-        <p className="mb-8 text-lg leading-9 font-light tracking-wide text-foreground">{children}</p>
+        <p className="text-foreground mb-8 text-lg leading-9 font-light tracking-wide">
+          {children}
+        </p>
       ),
       h1: ({ children }) => (
-        <h1 className="mt-16 mb-8 text-3xl leading-tight font-bold tracking-tight text-foreground sm:text-4xl">
+        <h1 className="text-foreground mt-16 mb-8 text-3xl leading-tight font-bold tracking-tight sm:text-4xl">
           {children}
         </h1>
       ),
       h2: ({ children }) => (
-        <h2 className="mt-14 mb-6 text-2xl leading-tight font-semibold tracking-tight text-foreground sm:text-3xl">
+        <h2 className="text-foreground mt-14 mb-6 text-2xl leading-tight font-semibold tracking-tight sm:text-3xl">
           {children}
         </h2>
       ),
       h3: ({ children }) => (
-        <h3 className="mt-12 mb-5 text-xl leading-tight font-medium text-foreground sm:text-2xl">
+        <h3 className="text-foreground mt-12 mb-5 text-xl leading-tight font-medium sm:text-2xl">
           {children}
         </h3>
       ),
       blockquote: ({ children }) => (
-        <blockquote className="my-12 border-l-2 border-primary bg-muted px-8 py-6 text-lg leading-8 font-light text-muted-foreground italic">
+        <blockquote className="border-primary bg-muted text-muted-foreground my-12 border-l-2 px-8 py-6 text-lg leading-8 font-light italic">
           {children}
         </blockquote>
       ),
     },
     list: {
       bullet: ({ children }) => (
-        <ul className="mb-8 space-y-3 text-lg font-light text-foreground">{children}</ul>
+        <ul className="text-foreground mb-8 space-y-3 text-lg font-light">{children}</ul>
       ),
       number: ({ children }) => (
-        <ol className="mb-8 space-y-3 text-lg font-light text-foreground">{children}</ol>
+        <ol className="text-foreground mb-8 space-y-3 text-lg font-light">{children}</ol>
       ),
     },
     listItem: {
       bullet: ({ children }) => (
         <li className="flex items-start leading-8">
-          <span className="mt-3 mr-4 inline-block h-2 w-2 flex-shrink-0 rounded-full bg-primary"></span>
+          <span className="bg-primary mt-3 mr-4 inline-block h-2 w-2 flex-shrink-0 rounded-full"></span>
           <span>{children}</span>
         </li>
       ),
@@ -110,12 +112,14 @@ const ArticlesPage = ({ post, readMoreArticles }: Props) => {
       ),
     },
     marks: {
-      strong: ({ children }) => <strong className="font-semibold text-foreground">{children}</strong>,
-      em: ({ children }) => <em className="font-light text-muted-foreground italic">{children}</em>,
+      strong: ({ children }) => (
+        <strong className="text-foreground font-semibold">{children}</strong>
+      ),
+      em: ({ children }) => <em className="text-muted-foreground font-light italic">{children}</em>,
       link: ({ children, value }) => (
         <a
           href={value?.href}
-          className="text-primary underline decoration-1 underline-offset-4 transition-all duration-300 hover:text-primary/80 hover:no-underline"
+          className="text-primary hover:text-primary/80 underline decoration-1 underline-offset-4 transition-all duration-300 hover:no-underline"
           target={value?.blank ? '_blank' : undefined}
           rel={value?.blank ? 'noopener noreferrer' : undefined}
         >
@@ -134,30 +138,30 @@ const ArticlesPage = ({ post, readMoreArticles }: Props) => {
   };
 
   return (
-    <div className="min-h-screen bg-background antialiased">
+    <div className="bg-background min-h-screen antialiased">
       <article className="mx-auto max-w-4xl px-6 sm:px-8 lg:px-12">
         {/* Header Section */}
         <header className="pt-20 pb-16">
           <div className="mx-auto max-w-3xl">
-            <h1 className="mb-8 text-4xl leading-tight font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-7xl">
+            <h1 className="text-foreground mb-8 text-4xl leading-tight font-bold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
               {post.title}
             </h1>
 
-            <div className="flex flex-col items-center justify-center gap-4 text-sm font-medium tracking-wide text-muted-foreground sm:flex-row sm:gap-8">
+            <div className="text-muted-foreground flex flex-col items-center justify-center gap-4 text-sm font-medium tracking-wide sm:flex-row sm:gap-8">
               <time dateTime={post.publishedAt} className="uppercase">
                 {formatDate(post.publishedAt)}
               </time>
 
               {post.author?.name && (
                 <>
-                  <span className="hidden h-4 w-px bg-border sm:block"></span>
+                  <span className="bg-border hidden h-4 w-px sm:block"></span>
                   <span className="tracking-wider uppercase">By {post.author.name}</span>
                 </>
               )}
 
               {post.categories && post.categories.length > 0 && (
                 <>
-                  <span className="hidden h-4 w-px bg-border sm:block"></span>
+                  <span className="bg-border hidden h-4 w-px sm:block"></span>
                   <span className="tracking-wider uppercase">
                     {post.categories.map((cat) => cat.title).join(' • ')}
                   </span>
@@ -174,11 +178,11 @@ const ArticlesPage = ({ post, readMoreArticles }: Props) => {
               alt={post.mainImage.alt || 'Article cover image'}
               width={1400}
               height={700}
-              className="h-auto w-full object-cover shadow-sm rounded-lg"
+              className="h-auto w-full rounded-lg object-cover shadow-sm"
               priority={true}
             />
             {post.mainImage.alt && (
-              <figcaption className="mt-6 text-center text-sm font-light tracking-wide text-muted-foreground">
+              <figcaption className="text-muted-foreground mt-6 text-center text-sm font-light tracking-wide">
                 {post.mainImage.alt}
               </figcaption>
             )}
@@ -219,7 +223,7 @@ const ArticlesPage = ({ post, readMoreArticles }: Props) => {
         <section className="bg-muted">
           <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-3xl">
-              <h2 className="mb-8 text-3xl font-bold text-foreground">Continue Reading</h2>
+              <h2 className="text-foreground mb-8 text-3xl font-bold">Continue Reading</h2>
 
               <div className="space-y-6">
                 {readMoreArticles.map((article) => (
@@ -232,10 +236,10 @@ const ArticlesPage = ({ post, readMoreArticles }: Props) => {
                       }/${article.slug.current}`}
                       className="block transition-all duration-200 hover:underline"
                     >
-                      <h3 className="text-xl leading-tight font-semibold text-foreground transition-colors duration-200 group-hover:text-primary">
+                      <h3 className="text-foreground group-hover:text-primary text-xl leading-tight font-semibold transition-colors duration-200">
                         {article.title}
                       </h3>
-                      <div className="mt-2 flex items-center text-sm text-muted-foreground underline-offset-0">
+                      <div className="text-muted-foreground mt-2 flex items-center text-sm underline-offset-0">
                         <span>Read article</span>
                         <svg
                           className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"

@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { Mosaic } from 'react-loading-indicators';
 
 type Post = {
   _id: string;
@@ -35,13 +36,28 @@ const formatDate = (isoDate: string): string => {
 };
 
 const ArticlesByCategory = ({ posts }: Props) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setLoading(false), 500);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="z-[9999] flex h-screen items-center justify-center overflow-hidden bg-[var(--bgColor)] dark:bg-[var(--bgColor)]">
+        <Mosaic color="#3168cc" size="large" text="" textColor="#NaNNaNNaN" />
+      </div>
+    );
+  }
+
   if (!posts || posts.length === 0) {
     return (
-      <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+      <div className="bg-background text-foreground min-h-screen transition-colors duration-300">
         <div className="flex min-h-screen items-center justify-center px-4 py-12">
           <div className="text-center">
-            <h1 className="mb-4 text-3xl font-semibold text-foreground">No Articles Found</h1>
-            <p className="text-lg text-muted-foreground">
+            <h1 className="text-foreground mb-4 text-3xl font-semibold">No Articles Found</h1>
+            <p className="text-muted-foreground text-lg">
               There are currently no articles in this category. Please check back later or explore
               other categories.
             </p>
@@ -56,11 +72,11 @@ const ArticlesByCategory = ({ posts }: Props) => {
     : 'Uncategorized';
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+    <div className="bg-background text-foreground min-h-screen transition-colors duration-300">
       <div className="mx-auto max-w-3xl px-4 py-12">
         <div className="mb-10">
-          <h1 className="mb-2 text-4xl font-bold tracking-tight text-foreground">{categories}</h1>
-          <p className="text-lg leading-relaxed text-muted-foreground">
+          <h1 className="text-foreground mb-2 text-4xl font-bold tracking-tight">{categories}</h1>
+          <p className="text-muted-foreground text-lg leading-relaxed">
             {posts[0].categories[0].description}
           </p>
         </div>
@@ -79,15 +95,15 @@ const ArticlesByCategory = ({ posts }: Props) => {
                 className="group"
               >
                 <Link href={fullSlug} className="block space-y-2">
-                  <h2 className="text-2xl font-semibold text-foreground underline-offset-4 transition-colors group-hover:underline group-hover:text-primary">
+                  <h2 className="text-foreground group-hover:text-primary text-2xl font-semibold underline-offset-4 transition-colors group-hover:underline">
                     {post.title}
                   </h2>
-                  <p className="text-base leading-relaxed text-muted-foreground">{post.excerpt}</p>
-                  <div className="mt-1 text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-base leading-relaxed">{post.excerpt}</p>
+                  <div className="text-muted-foreground mt-1 text-sm">
                     {formatDate(post.publishedAt)} · {post.readingTime} min read
                   </div>
                 </Link>
-                <div className="mt-6 border-b border-border" />
+                <div className="border-border mt-6 border-b" />
               </motion.div>
             );
           })}
