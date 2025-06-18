@@ -70,7 +70,7 @@ const CategoryHighlights = ({ caetegories }: LatestPostsProps) => {
     >
       <h2
         id="category-highlights-heading"
-        className="mb-4 text-xl leading-tight font-bold tracking-[-0.015em] text-[#141415] sm:text-2xl"
+        className="mb-4 text-xl leading-tight font-bold tracking-[-0.015em] text-foreground sm:text-2xl"
       >
         Category Highlights
       </h2>
@@ -79,13 +79,13 @@ const CategoryHighlights = ({ caetegories }: LatestPostsProps) => {
           <Link
             key={cat.title}
             href={cat.slug.current}
-            className="flex flex-col gap-3 rounded border border-[#e0e0e1] bg-white p-4 transition hover:shadow"
+            className="flex flex-col gap-3 rounded border border-border bg-card p-4 transition hover:shadow-md hover:border-primary/50"
             aria-label={cat.title}
           >
-            <span className="text-[#141415]">{catIcon[cat.title]}</span>
+            <span className="text-primary">{catIcon[cat.title]}</span>
             <div className="flex flex-col gap-1">
-              <h3 className="text-base leading-tight font-bold text-[#141415]">{cat.title}</h3>
-              <p className="text-sm leading-normal font-normal text-[#737578]">{cat.description}</p>
+              <h3 className="text-base leading-tight font-bold text-card-foreground">{cat.title}</h3>
+              <p className="text-sm leading-normal font-normal text-muted-foreground">{cat.description}</p>
             </div>
           </Link>
         ))}

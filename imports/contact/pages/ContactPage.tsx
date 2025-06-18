@@ -2,60 +2,60 @@ import React from 'react';
 
 const ContactPage = () => {
   return (
-    <>
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       <div className="flex flex-wrap justify-between gap-3 p-4">
         <div className="flex min-w-72 flex-col gap-3">
-          <p className="tracking-light text-[32px] leading-tight font-bold text-[#141414]">
+          <p className="tracking-light text-[32px] leading-tight font-bold text-foreground">
             Contact
           </p>
-          <p className="text-sm leading-normal font-normal text-neutral-500">
-            Want to reach out? I&apos;d love to hear from you.
+          <p className="text-sm leading-normal font-normal text-muted-foreground">
+            Want to reach out? I'd love to hear from you.
           </p>
         </div>
       </div>
-      <p className="px-4 pt-1 pb-3 text-base leading-normal font-normal text-[#141414]">
+      <p className="px-4 pt-1 pb-3 text-base leading-normal font-normal text-foreground">
         Whether you have feedback, questions, collaboration ideas, or just want to connect — I read
         every message. Please keep it short and respectful.
       </p>
       <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
         <label className="flex min-w-40 flex-1 flex-col">
-          <p className="pb-2 text-base leading-normal font-medium text-[#141414]">Name</p>
+          <p className="pb-2 text-base leading-normal font-medium text-foreground">Name</p>
           <input
             placeholder="Your Name"
-            className="form-input flex h-14 w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl border border-[#dbdbdb] bg-neutral-50 p-[15px] text-base leading-normal font-normal text-[#141414] placeholder:text-neutral-500 focus:border-[#dbdbdb] focus:ring-0 focus:outline-0"
+            className="form-input flex h-14 w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl border border-border bg-input p-[15px] text-base leading-normal font-normal text-foreground placeholder:text-muted-foreground focus:border-border focus:ring-0 focus:outline-0"
             defaultValue=""
           />
         </label>
       </div>
       <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
         <label className="flex min-w-40 flex-1 flex-col">
-          <p className="pb-2 text-base leading-normal font-medium text-[#141414]">Email</p>
+          <p className="pb-2 text-base leading-normal font-medium text-foreground">Email</p>
           <input
             placeholder="Your Email"
-            className="form-input flex h-14 w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl border border-[#dbdbdb] bg-neutral-50 p-[15px] text-base leading-normal font-normal text-[#141414] placeholder:text-neutral-500 focus:border-[#dbdbdb] focus:ring-0 focus:outline-0"
+            className="form-input flex h-14 w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl border border-border bg-input p-[15px] text-base leading-normal font-normal text-foreground placeholder:text-muted-foreground focus:border-border focus:ring-0 focus:outline-0"
             defaultValue=""
           />
         </label>
       </div>
       <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
         <label className="flex min-w-40 flex-1 flex-col">
-          <p className="pb-2 text-base leading-normal font-medium text-[#141414]">Message</p>
+          <p className="pb-2 text-base leading-normal font-medium text-foreground">Message</p>
           <textarea
             placeholder="Your Message"
-            className="form-input flex min-h-36 w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl border border-[#dbdbdb] bg-neutral-50 p-[15px] text-base leading-normal font-normal text-[#141414] placeholder:text-neutral-500 focus:border-[#dbdbdb] focus:ring-0 focus:outline-0"
+            className="form-input flex min-h-36 w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl border border-border bg-input p-[15px] text-base leading-normal font-normal text-foreground placeholder:text-muted-foreground focus:border-border focus:ring-0 focus:outline-0"
             defaultValue={''}
           />
         </label>
       </div>
       <div className="flex justify-start px-4 py-3">
-        <button className="flex h-10 max-w-[480px] min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-black px-4 text-sm leading-normal font-bold tracking-[0.015em] text-neutral-50">
+        <button className="flex h-10 max-w-[480px] min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-primary px-4 text-sm leading-normal font-bold tracking-[0.015em] text-primary-foreground">
           <span className="truncate">Send Message</span>
         </button>
       </div>
-      <p className="px-4 pt-1 pb-3 text-sm leading-normal font-normal text-neutral-500">
+      <p className="px-4 pt-1 pb-3 text-sm leading-normal font-normal text-muted-foreground">
         Or email me directly at: hello@financeblog.com
       </p>
-    </>
+    </div>
   );
 };
 

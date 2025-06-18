@@ -30,19 +30,19 @@ type LatestPostsProps = {
 };
 
 const PostCard = ({ category, title, excerpt, imageUrl, link = '#', ariaLabel }: PostCardProps) => (
-  <article className="flex flex-col items-stretch justify-between gap-4 rounded-lg bg-white p-4 shadow-sm md:flex-row">
+  <article className="flex flex-col items-stretch justify-between gap-4 rounded-lg bg-card p-4 shadow-sm border border-border md:flex-row">
     <div className="flex flex-[2_2_0px] flex-col gap-2">
-      <p className="text-sm font-normal text-[#737578]">{category}</p>
+      <p className="text-sm font-normal text-muted-foreground">{category}</p>
       <Link href={link}>
-        <h3 className="text-base leading-tight font-bold text-[#141415] hover:underline">
+        <h3 className="text-base leading-tight font-bold text-card-foreground hover:text-primary transition-colors">
           {title}
         </h3>
       </Link>
-      <p className="text-sm font-normal text-[#737578]">{excerpt}</p>
+      <p className="text-sm font-normal text-muted-foreground">{excerpt}</p>
       <Link
         href={link}
         aria-label={`Read full post: ${title}`}
-        className="mt-2 w-fit text-sm font-medium text-[#22262a] hover:underline"
+        className="mt-2 w-fit text-sm font-medium text-primary hover:underline"
       >
         Read More
       </Link>
@@ -61,7 +61,7 @@ const PostCard = ({ category, title, excerpt, imageUrl, link = '#', ariaLabel }:
 const LatestPosts = ({ posts }: LatestPostsProps) => {
   return (
     <section className="px-4 py-6">
-      <h2 className="mb-4 text-[22px] leading-tight font-bold tracking-[-0.015em] text-[#141415]">
+      <h2 className="mb-4 text-[22px] leading-tight font-bold tracking-[-0.015em] text-foreground">
         Latest Posts
       </h2>
 

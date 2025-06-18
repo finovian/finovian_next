@@ -25,14 +25,14 @@ type FeaturedArticleProps = {
 const FeaturedArticle = ({ posts }: FeaturedArticleProps) => {
   return (
     <article className="px-4 pt-5 pb-6">
-      <h2 className="mb-4 text-[22px] leading-tight font-bold tracking-[-0.015em] text-[#141415]">
+      <h2 className="mb-4 text-[22px] leading-tight font-bold tracking-[-0.015em] text-foreground">
         Featured Article
       </h2>
 
       {posts.map((item) => (
         <div
           key={item._id}
-          className="mb-6 flex flex-col gap-4 overflow-hidden rounded-lg bg-white md:flex-row"
+          className="mb-6 flex flex-col gap-4 overflow-hidden rounded-lg bg-card border border-border shadow-sm md:flex-row hover:shadow-md transition-shadow"
         >
           <div
             className="aspect-video w-full rounded bg-cover bg-center bg-no-repeat md:w-1/2 md:rounded-none"
@@ -48,14 +48,14 @@ const FeaturedArticle = ({ posts }: FeaturedArticleProps) => {
           {/* Content */}
           <div className="flex w-full flex-col justify-between gap-4 p-4 md:w-1/2">
             <div className="flex flex-col gap-2">
-              <p className="text-sm leading-normal font-normal text-[#737578] capitalize">
+              <p className="text-sm leading-normal font-normal text-muted-foreground capitalize">
                 {item.categories?.[0]?.title || 'Uncategorized'}
               </p>
 
-              <h3 className="text-lg leading-tight font-bold tracking-[-0.015em] text-[#141415]">
+              <h3 className="text-lg leading-tight font-bold tracking-[-0.015em] text-card-foreground">
                 {item.title}
               </h3>
-              <p className="text-base leading-normal font-normal text-[#737578]">
+              <p className="text-base leading-normal font-normal text-muted-foreground">
                 {item.description}
               </p>
             </div>
@@ -68,7 +68,7 @@ const FeaturedArticle = ({ posts }: FeaturedArticleProps) => {
                     : `/${item.categories?.[0]?.slug?.current || 'general'}`
                 }/${item.slug.current}`}
                 aria-label={`Read full article: ${item.title}`}
-                className="inline-flex h-8 items-center justify-center rounded bg-[#22262a] px-4 text-sm leading-normal font-medium text-white transition hover:bg-[#1b1f23]"
+                className="inline-flex h-8 items-center justify-center rounded bg-primary px-4 text-sm leading-normal font-medium text-primary-foreground transition hover:opacity-90"
               >
                 <span className="truncate">Read More</span>
               </Link>

@@ -1,6 +1,7 @@
 import containerQueries from '@tailwindcss/container-queries';
 
 const config = {
+  darkMode: ['class'],
   theme: {
     extend: {
       fontFamily: {

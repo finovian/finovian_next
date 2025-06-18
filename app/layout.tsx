@@ -71,11 +71,11 @@ export default async function RootLayout({
         />
       </head>
 
-      <body className="font-sans antialiased" suppressHydrationWarning>
+      <body className="font-sans antialiased bg-background text-foreground" suppressHydrationWarning>
         {/* Skip to main content for accessibility */}
         <a
           href="#main-content"
-          className="sr-only z-50 rounded-md bg-blue-600 px-4 py-2 text-white focus:not-sr-only focus:absolute focus:top-4 focus:left-4"
+          className="sr-only z-50 rounded-md bg-primary px-4 py-2 text-primary-foreground focus:not-sr-only focus:absolute focus:top-4 focus:left-4"
         >
           Skip to main content
         </a>
@@ -83,13 +83,13 @@ export default async function RootLayout({
         <ErrorBoundary>
           <Providers>
             <PlausibleInitializer />
-            <div className="group/design-root relative flex size-full min-h-screen flex-col overflow-x-hidden bg-white">
+            <div className="group/design-root relative flex size-full min-h-screen flex-col overflow-x-hidden bg-background">
               <div className="layout-container flex h-full grow flex-col">
                 <FinancialNavbar categories={categories} />
 
                 <main
                   id="main-content"
-                  className="mt-[55px] flex flex-1 justify-center px-0 py-5"
+                  className="mt-[55px] flex flex-1 justify-center px-0 py-5 bg-background"
                   role="main"
                 >
                   <div className="layout-content-container flex max-w-[960px] flex-1 flex-col">

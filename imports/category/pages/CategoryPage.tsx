@@ -37,35 +37,34 @@ const formatDate = (isoDate: string): string => {
 const ArticlesByCategory = ({ posts }: Props) => {
   if (!posts || posts.length === 0) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-white px-4 py-12 text-[#1a1a1a]">
-        <div className="text-center">
-          <h1 className="mb-4 text-3xl font-semibold">No Articles Found</h1>
-          <p className="text-lg text-neutral-600">
-            There are currently no articles in this category. Please check back later or explore
-            other categories.
-          </p>
+      <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+        <div className="flex min-h-screen items-center justify-center px-4 py-12">
+          <div className="text-center">
+            <h1 className="mb-4 text-3xl font-semibold text-foreground">No Articles Found</h1>
+            <p className="text-lg text-muted-foreground">
+              There are currently no articles in this category. Please check back later or explore
+              other categories.
+            </p>
+          </div>
         </div>
       </div>
     );
   }
 
-  // Safely get categories from the first post
   const categories = posts[0]?.categories?.length
     ? posts[0].categories.map((cat) => cat.title).join(', ')
     : 'Uncategorized';
 
   return (
-    <div className="min-h-screen bg-white text-[#1a1a1a]">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       <div className="mx-auto max-w-3xl px-4 py-12">
-        {/* Page Header */}
         <div className="mb-10">
-          <h1 className="mb-2 text-4xl font-bold tracking-tight">{categories}</h1>
-          <p className="text-lg leading-relaxed text-neutral-600">
+          <h1 className="mb-2 text-4xl font-bold tracking-tight text-foreground">{categories}</h1>
+          <p className="text-lg leading-relaxed text-muted-foreground">
             {posts[0].categories[0].description}
           </p>
         </div>
 
-        {/* Articles List */}
         <div className="space-y-10">
           {posts.map((post, index) => {
             const categorySlug = post.categories?.[0]?.slug?.current || 'uncategorized';
@@ -80,15 +79,15 @@ const ArticlesByCategory = ({ posts }: Props) => {
                 className="group"
               >
                 <Link href={fullSlug} className="block space-y-2">
-                  <h2 className="text-2xl font-semibold underline-offset-4 transition group-hover:underline">
+                  <h2 className="text-2xl font-semibold text-foreground underline-offset-4 transition-colors group-hover:underline group-hover:text-primary">
                     {post.title}
                   </h2>
-                  <p className="text-base leading-relaxed text-neutral-600">{post.excerpt}</p>
-                  <div className="mt-1 text-sm text-neutral-600">
+                  <p className="text-base leading-relaxed text-muted-foreground">{post.excerpt}</p>
+                  <div className="mt-1 text-sm text-muted-foreground">
                     {formatDate(post.publishedAt)} · {post.readingTime} min read
                   </div>
                 </Link>
-                <div className="mt-6 border-b border-neutral-200" />
+                <div className="mt-6 border-b border-border" />
               </motion.div>
             );
           })}

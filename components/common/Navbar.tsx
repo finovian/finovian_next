@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { X } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme/ThemeToggle';
 
 type Category = {
   _id: string;
@@ -69,7 +70,7 @@ export default function FinancialNavbar({ categories }: Props) {
   const NavLink = ({ href, label }: { href: string; label: string }) => (
     <Link
       href={href.startsWith('/') ? href : `/${href}`}
-      className="text-sm font-medium tracking-wide text-[#1a202c] transition-all duration-200 hover:text-[#0a2540]"
+      className="text-sm font-medium tracking-wide text-foreground transition-all duration-200 hover:text-primary"
       onClick={() => setMenuOpen(false)}
     >
       {label}
@@ -78,10 +79,10 @@ export default function FinancialNavbar({ categories }: Props) {
 
   return (
     <>
-      <nav className="fixed top-0 z-50 w-full border-b border-gray-100 bg-white shadow-sm">
+      <nav className="fixed top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 sm:px-10">
           <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold tracking-wide text-[#0a2540]">
+            <Link href="/" className="text-2xl font-bold tracking-wide text-primary">
               Finovian
             </Link>
           </div>
@@ -100,13 +101,14 @@ export default function FinancialNavbar({ categories }: Props) {
               <NavLink href="/about" label="About" />
               <button
                 onClick={() => setLoginOpen(true)}
-                className="rounded-lg bg-gradient-to-r from-[#0a2540] to-[#1a1f36] px-4 py-2 text-sm font-semibold text-white shadow transition hover:opacity-90"
+                className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow transition hover:opacity-90"
               >
                 Subscribe
               </button>
             </div>
 
             <div className="flex items-center gap-3 lg:gap-4">
+              <ThemeToggle />
               <div ref={searchRef} className="relative hidden lg:block">
                 {/* <button
                   type="button"
@@ -117,7 +119,7 @@ export default function FinancialNavbar({ categories }: Props) {
                 </button> */}
                 <div
                   className={clsx(
-                    'absolute top-1/2 right-0 z-50 flex -translate-y-1/2 items-center gap-2 overflow-hidden rounded-md border border-gray-300 bg-gray-100 transition-all duration-300',
+                    'absolute top-1/2 right-0 z-50 flex -translate-y-1/2 items-center gap-2 overflow-hidden rounded-md border border-input bg-muted transition-all duration-300',
                     searchOpen
                       ? 'w-72 px-2 py-1 opacity-100'
                       : 'pointer-events-none w-0 px-0 py-0 opacity-0'
@@ -128,13 +130,13 @@ export default function FinancialNavbar({ categories }: Props) {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-                    className="flex-1 bg-transparent px-2 py-1 text-sm text-gray-800 focus:outline-none"
+                    className="flex-1 bg-transparent px-2 py-1 text-sm text-foreground focus:outline-none"
                     placeholder="Search..."
                     onClick={(e) => e.stopPropagation()}
                   />
                   <button
                     onClick={handleSearch}
-                    className="px-2 text-sm font-medium text-[#2e376687] transition hover:text-[#0a2540]"
+                    className="px-2 text-sm font-medium text-muted-foreground transition hover:text-primary"
                   >
                     Go
                   </button>
@@ -156,12 +158,12 @@ export default function FinancialNavbar({ categories }: Props) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-                className="w-full rounded-md border border-gray-300 bg-gray-100 px-4 py-2 text-sm transition focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full rounded-md border border-input bg-background px-4 py-2 text-sm text-foreground transition focus:ring-2 focus:ring-ring focus:outline-none"
                 placeholder="Search..."
               />
               <button
                 onClick={handleSearch}
-                className="rounded-md bg-black px-4 py-2 text-sm text-white transition hover:bg-[#0a2540]"
+                className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground transition hover:opacity-90"
               >
                 Go
               </button>
@@ -171,7 +173,7 @@ export default function FinancialNavbar({ categories }: Props) {
 
         <div
           className={clsx(
-            'overflow-hidden border-t border-gray-100 bg-white transition-all duration-300 lg:hidden',
+            'overflow-hidden border-t border-border bg-background transition-all duration-300 lg:hidden',
             menuOpen ? 'max-h-screen py-4' : 'max-h-0'
           )}
         >
@@ -186,7 +188,7 @@ export default function FinancialNavbar({ categories }: Props) {
                 setLoginOpen(true);
                 setMenuOpen(false);
               }}
-              className="rounded-lg bg-gradient-to-r from-[#0a2540] to-[#1a1f36] px-4 py-2 text-sm font-semibold text-white shadow transition hover:opacity-90"
+              className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow transition hover:opacity-90"
             >
               Subscribe
             </button>
@@ -198,10 +200,10 @@ export default function FinancialNavbar({ categories }: Props) {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm">
           <div
             ref={loginRef}
-            className="animate-fade-in-up relative mx-4 w-full max-w-sm rounded-xl bg-white p-6 shadow-xl"
+            className="animate-fade-in-up relative mx-4 w-full max-w-sm rounded-xl bg-card p-6 shadow-xl"
           >
             <button
-              className="absolute top-3 right-3 text-gray-400 transition hover:text-gray-600"
+              className="absolute top-3 right-3 text-muted-foreground transition hover:text-foreground"
               onClick={() => {
                 setLoginOpen(false);
                 setStatus('idle');
@@ -213,12 +215,12 @@ export default function FinancialNavbar({ categories }: Props) {
               <X className="h-5 w-5" />
             </button>
 
-            <h2 className="mb-4 text-xl font-semibold text-[#0a2540]">Subscribe</h2>
+            <h2 className="mb-4 text-xl font-semibold text-foreground">Subscribe</h2>
 
             <input
               type="email"
               placeholder="Email address"
-              className="mb-4 w-full rounded-md border border-gray-300 px-4 py-2 text-sm transition focus:outline-none"
+              className="mb-4 w-full rounded-md border border-input bg-background px-4 py-2 text-sm text-foreground transition focus:outline-none focus:ring-2 focus:ring-ring"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               disabled={status === 'loading' || status === 'success'}
@@ -235,8 +237,8 @@ export default function FinancialNavbar({ categories }: Props) {
             <button
               className={`w-full rounded-md py-2 text-sm font-medium transition ${
                 status === 'loading'
-                  ? 'cursor-not-allowed bg-gray-400 text-gray-700'
-                  : 'bg-black text-white hover:bg-[#0a2540]'
+                  ? 'cursor-not-allowed bg-muted text-muted-foreground'
+                  : 'bg-primary text-primary-foreground hover:opacity-90'
               }`}
               onClick={async () => {
                 if (!email || !email.includes('@')) {
@@ -292,19 +294,19 @@ function Hamburger({ isOpen, toggle }: { isOpen: boolean; toggle: () => void }) 
     >
       <span
         className={clsx(
-          'h-0.5 rounded bg-[#0a2540] transition-all duration-300',
+          'h-0.5 rounded bg-foreground transition-all duration-300',
           isOpen ? 'translate-y-2 rotate-45' : ''
         )}
       />
       <span
         className={clsx(
-          'h-0.5 rounded bg-[#0a2540] transition-opacity duration-300',
+          'h-0.5 rounded bg-foreground transition-opacity duration-300',
           isOpen ? 'opacity-0' : 'opacity-100'
         )}
       />
       <span
         className={clsx(
-          'h-0.5 rounded bg-[#0a2540] transition-all duration-300',
+          'h-0.5 rounded bg-foreground transition-all duration-300',
           isOpen ? '-translate-y-2 -rotate-45' : ''
         )}
       />

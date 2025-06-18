@@ -52,13 +52,13 @@ const NewsLatter = () => {
   if (!hasMounted) return null;
 
   return (
-    <div className="bg-[#0e1111] px-6 py-16 font-serif text-white md:px-12 lg:px-24">
+    <div className="bg-secondary px-6 py-16 font-serif text-secondary-foreground md:px-12 lg:px-24">
       <div className="mx-auto w-full max-w-[960px]">
         <div className="space-y-6 text-center md:space-y-8">
-          <h1 className="text-[28px] leading-tight font-bold tracking-tight md:text-4xl md:leading-snug md:font-extrabold">
+          <h1 className="text-[28px] leading-tight font-bold tracking-tight md:text-4xl md:leading-snug md:font-extrabold text-secondary-foreground">
             Get smarter about investing — in your inbox.
           </h1>
-          <p className="mx-auto max-w-[680px] text-sm text-gray-400 md:text-base">
+          <p className="mx-auto max-w-[680px] text-sm text-muted-foreground md:text-base">
             Join thousands of investors and receive concise, actionable insights each week.
           </p>
 
@@ -75,13 +75,13 @@ const NewsLatter = () => {
               disabled={status === 'loading' || status === 'success'}
               aria-invalid={status === 'error'}
               required
-              className="h-12 w-full rounded-md bg-[#f2f2f3] px-4 text-sm text-black transition placeholder:text-[#737578] focus:ring-2 focus:ring-white focus:outline-none sm:h-14 sm:rounded-r-none sm:text-base"
+              className="h-12 w-full rounded-md bg-background border border-input px-4 text-sm text-foreground transition placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:outline-none sm:h-14 sm:rounded-r-none sm:text-base"
             />
 
             <button
               type="submit"
               disabled={status === 'loading' || status === 'success'}
-              className="h-12 w-full cursor-pointer rounded-md bg-[#e81a1a] px-6 text-sm font-semibold text-white transition hover:bg-[#d61616] sm:h-14 sm:w-auto sm:rounded-l-none sm:text-base"
+              className="h-12 w-full cursor-pointer rounded-md bg-primary px-6 text-sm font-semibold text-primary-foreground transition hover:opacity-90 sm:h-14 sm:w-auto sm:rounded-l-none sm:text-base"
             >
               {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
             </button>
@@ -114,10 +114,10 @@ const NewsLatter = () => {
           </AnimatePresence>
         </div>
 
-        <hr className="my-12 border-[#2a2a2a]" />
+        <hr className="my-12 border-border" />
 
         {/* Trusted Logos */}
-        <div className="mb-4 text-center text-sm text-gray-400">Trusted by readers from:</div>
+        <div className="mb-4 text-center text-sm text-muted-foreground">Trusted by readers from:</div>
         <div className="flex flex-wrap items-center justify-center gap-8">
           {[
             { src: '/NewYorkTimes.svg', alt: 'New York Times' },

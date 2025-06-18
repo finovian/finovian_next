@@ -2,39 +2,39 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className="border-t border-gray-200 bg-gray-50 text-gray-700">
+    <footer className="border-t border-border bg-muted text-muted-foreground">
       <div className="layout-content-container mx-auto flex max-w-[960px] flex-1 flex-col px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Brand Info */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Finovian</h2>
-            <p className="mt-4 text-sm text-gray-600">
+            <h2 className="text-2xl font-bold text-foreground">Finovian</h2>
+            <p className="mt-4 text-sm text-muted-foreground">
               We bring you the best solutions with simplicity and trust.
             </p>
           </div>
 
           {/* Navigation Links */}
           <div>
-            <h3 className="mb-3 text-lg font-semibold text-gray-800">Company</h3>
+            <h3 className="mb-3 text-lg font-semibold text-foreground">Company</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/about" className="hover:text-black">
+                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/author" className="hover:text-black">
+                <Link href="/author" className="text-muted-foreground hover:text-primary transition-colors">
                   Author
                 </Link>
               </li>
 
               <li>
-                <Link href="/category/stocks" className="hover:text-black">
+                <Link href="/category/stocks" className="text-muted-foreground hover:text-primary transition-colors">
                   Stocks
                 </Link>
               </li>
               <li>
-                <Link href="/category/strategy" className="hover:text-black">
+                <Link href="/category/strategy" className="text-muted-foreground hover:text-primary transition-colors">
                   Strategy
                 </Link>
               </li>
@@ -43,25 +43,25 @@ const Footer = () => {
 
           {/* Support Links */}
           <div>
-            <h3 className="mb-3 text-lg font-semibold text-gray-800">Support</h3>
+            <h3 className="mb-3 text-lg font-semibold text-foreground">Support</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/help" className="hover:text-black">
+                <Link href="/help" className="text-muted-foreground hover:text-primary transition-colors">
                   Help Center
                 </Link>
               </li>
               <li>
-                <Link href="/privacy-policy" className="hover:text-black">
+                <Link href="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-black">
+                <Link href="/terms" className="text-muted-foreground hover:text-primary transition-colors">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-black">
+                <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
                   Contact
                 </Link>
               </li>
@@ -70,13 +70,13 @@ const Footer = () => {
 
           {/* Contact Info / Social */}
           <div>
-            <h3 className="mb-3 text-lg font-semibold text-gray-800">Contact Us</h3>
-            <p className="text-sm">info@finovian.com</p>
+            <h3 className="mb-3 text-lg font-semibold text-foreground">Contact Us</h3>
+            <p className="text-sm text-muted-foreground">info@finovian.com</p>
 
             <div className="mt-4 flex space-x-4">
               <a
                 href="https://facebook.com"
-                className="text-gray-500 transition hover:text-black"
+                className="text-muted-foreground transition hover:text-primary"
                 aria-label="Follow us on Facebook"
               >
                 <svg
@@ -90,7 +90,7 @@ const Footer = () => {
               </a>
               <a
                 href="https://twitter.com"
-                className="text-gray-500 transition hover:text-black"
+                className="text-muted-foreground transition hover:text-primary"
                 aria-label="Follow us on Twitter"
               >
                 <svg
@@ -104,7 +104,7 @@ const Footer = () => {
               </a>
               <a
                 href="https://github.com"
-                className="text-gray-500 transition hover:text-black"
+                className="text-muted-foreground transition hover:text-primary"
                 aria-label="Follow us on GitHub"
               >
                 <svg
@@ -121,7 +121,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Footer */}
-        <div className="mt-12 border-t border-gray-200 pt-6 text-center text-sm text-gray-500">
+        <div className="mt-12 border-t border-border pt-6 text-center text-sm text-muted-foreground">
           &copy; {new Date().getFullYear()} Finovian. All rights reserved.
         </div>
       </div>
