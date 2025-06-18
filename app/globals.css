@@ -51,104 +51,108 @@
 
 :root {
   /* Backgrounds and Foregrounds */
-  --background: #fdfdfd;
+  --background: #ffffff;
   --foreground: #121212;
 
-  --card: #ffffff;
-  --card-foreground: #1c1c1c;
+  --card: #fff5f5;
+  --card-foreground: #1a1a1a;
 
-  --popover: #ffffff;
+  --popover: #fff5f5;
   --popover-foreground: #121212;
 
-  /* Trust and Primary Theme Colors */
-  --primary: #007acc;
-  /* Trustworthy blue */
+  /* Primary Theme Colors */
+  --primary: #b00020;
+  /* Premium red */
   --primary-foreground: #ffffff;
 
-  --secondary: #e3f2fd;
-  /* Light blue background highlight */
-  --secondary-foreground: #0d47a1;
+  --secondary: #ffeeee;
+  /* Light red highlight */
+  --secondary-foreground: #7f0a0a;
 
-  --highlight: #7c4dff;
-  /* Soft purple accent */
+  --highlight: #880e4f;
+  /* Deep red-pink for accent */
   --highlight-foreground: #ffffff;
 
-  --destructive: #ff5252;
+  --destructive: #c62828;
   --destructive-foreground: #ffffff;
 
   /* UI Controls */
-  --border: #e0e0e0;
-  --input: #f0f0f0;
-  --ring: #007acc;
+  --border: #f5cccc;
+  --input: #fff0f0;
+  --ring: #b00020;
 
   /* Chart Colors */
-  --chart-up: #00c853;
-  --chart-down: #d50000;
-  --chart-neutral: #7c4dff;
-  --chart-grid: #e0e0e0;
+  --chart-up: #2e7d32;
+  /* Green for success */
+  --chart-down: #d32f2f;
+  /* Strong red */
+  --chart-neutral: #880e4f;
+  /* Same as highlight */
+  --chart-grid: #f1dcdc;
 
   /* Sidebar / Menu */
-  --sidebar: #f4f6f8;
-  --sidebar-foreground: #1c1c1c;
-  --sidebar-primary: #007acc;
+  --sidebar: #fff0f0;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #b00020;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #dfe9f3;
-  --sidebar-accent-foreground: #1c1c1c;
-  --sidebar-border: #e0e0e0;
-  --sidebar-ring: #007acc;
+  --sidebar-accent: #ffebee;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #f5cccc;
+  --sidebar-ring: #b00020;
 
   /* Fonts */
   --font-sans: Inter, system-ui, sans-serif;
-  --font-serif: Georgia, serif;
+  --font-serif: Merriweather, Georgia, serif;
   --font-mono: JetBrains Mono, monospace;
 
   /* Radius and Shadow */
   --radius: 0.5rem;
-
   --shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
   --shadow-lg: 0px 8px 30px rgba(0, 0, 0, 0.08);
 }
 
 .dark {
-  --background: #0e0e15;
-  --foreground: #e6e6f2;
+  --background: #1a0000;
+  --foreground: #f2f2f2;
 
-  --card: #1a1a28;
-  --card-foreground: #e6e6f2;
+  --card: #2a0000;
+  --card-foreground: #f2f2f2;
 
-  --popover: #1a1a28;
-  --popover-foreground: #e6e6f2;
+  --popover: #2a0000;
+  --popover-foreground: #f2f2f2;
 
-  --primary: #007acc;
-  --primary-foreground: #ffffff;
+  --primary: #ff2e2e;
+  /* Bright red accent for dark mode */
+  --primary-foreground: #1a0000;
 
-  --secondary: #18202c;
-  --secondary-foreground: #bbdefb;
+  --secondary: #3a0a0a;
+  --secondary-foreground: #ffecec;
 
-  --highlight: #a58eff;
-  --highlight-foreground: #0e0e15;
+  --highlight: #ff4d6d;
+  --highlight-foreground: #1a0000;
 
-  --destructive: #ff5252;
-  --destructive-foreground: #ffffff;
+  --destructive: #ff6b6b;
+  --destructive-foreground: #1a0000;
 
-  --border: #2c2c3c;
-  --input: #2c2c3c;
-  --ring: #007acc;
+  --border: #5a1a1a;
+  --input: #3a0a0a;
+  --ring: #ff2e2e;
 
-  --chart-up: #00e676;
+  --chart-up: #66bb6a;
   --chart-down: #ef5350;
-  --chart-neutral: #a58eff;
-  --chart-grid: #333346;
+  --chart-neutral: #ff4d6d;
+  --chart-grid: #4d1a1a;
 
-  --sidebar: #15151f;
-  --sidebar-foreground: #e6e6f2;
-  --sidebar-primary: #007acc;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #252538;
-  --sidebar-accent-foreground: #e6e6f2;
-  --sidebar-border: #2c2c3c;
-  --sidebar-ring: #007acc;
+  --sidebar: #2a0000;
+  --sidebar-foreground: #f2f2f2;
+  --sidebar-primary: #ff2e2e;
+  --sidebar-primary-foreground: #1a0000;
+  --sidebar-accent: #3a0a0a;
+  --sidebar-accent-foreground: #f2f2f2;
+  --sidebar-border: #4a1a1a;
+  --sidebar-ring: #ff2e2e;
 }
+
 
 @theme inline {
   --color-background: var(--background);
