@@ -46,7 +46,7 @@ const ArticlesByCategory = ({ posts }: Props) => {
   if (loading) {
     return (
       <div className="z-[9999] flex h-screen items-center justify-center overflow-hidden bg-[var(--bgColor)] dark:bg-[var(--bgColor)]">
-        <Mosaic color="#3168cc" size="large" text="" textColor="#NaNNaNNaN" />
+        <Mosaic color="#349b34" size="medium" text="" textColor="" />
       </div>
     );
   }
