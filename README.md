@@ -1,4 +1,4 @@
-# Finovian - Financial News & Analysis Platform  
+# Finovian - Financial News & Analysis Platform 
 
 A modern, **100% optimized** financial news and analysis platform built with
 Next.js 15, TypeScript, and Sanity CMS. Achieving perfect Lighthouse scores  
