@@ -9,6 +9,7 @@ import ErrorBoundary from '@/components/common/ErrorBoundary';
 import PlausibleInitializer from '@/components/common/PlausibleInitializer';
 import { getAllCategories } from '@/lib/queries';
 import { generateMetadata, generateWebsiteSchema, generateOrganizationSchema } from '@/lib/seo';
+import { ubuntu } from "@/lib/theme-";
 
 export const metadata = generateMetadata({
   title: 'Expert Financial Insights & Investment Analysis',
@@ -51,7 +52,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${merriweather.variable}`}
+      className={`${inter.variable} ${merriweather.variable} ${ubuntu.variable} antialiased`}
       suppressHydrationWarning
     >
       <head>
@@ -71,7 +72,7 @@ export default async function RootLayout({
         />
       </head>
 
-      <body className="font-sans antialiased bg-background text-foreground" suppressHydrationWarning>
+      <body className={`font-sans antialiased ${ubuntu.className} bg-background text-foreground` }suppressHydrationWarning>
         {/* Skip to main content for accessibility */}
         <a
           href="#main-content"
