@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { Ubuntu } from 'next/font/google'
 
 /**
  * Utility function to merge class names with theme-aware styles
@@ -83,4 +84,15 @@ export function getShadowClass(elevation: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2x
   };
   return shadows[elevation];
 }
+
+
+
+// Configure Ubuntu font to match exactly what Next.js optimizes for
+export const ubuntu = Ubuntu({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-ubuntu',
+  weight: ["300", "400", "500", "700"]
+})
+
 
