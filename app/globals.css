@@ -208,7 +208,7 @@
 
 body {
    letter-spacing: var(--tracking-normal);
-  font-family: "Newsreader", sans-serif;
+  /* font-family: "Newsreader", sans-serif; */
   font-feature-settings: "kern" 1, "liga" 1;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
